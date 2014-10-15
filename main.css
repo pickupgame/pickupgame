@@ -1,0 +1,114 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+#container {
+	margin: 0 auto;
+	position: relative;
+	width: 1300px;
+	height: 1000px;
+	border: 1px solid #000;
+}
+
+#header {
+	position: relative;
+	width: 990px;
+	height: 100px;
+	border: 1px solid #0000FF;
+}
+
+#logo {
+	float: left;
+	width: 400px;
+	height: 100px;
+	border: 1px solid #000;
+}
+
+#navigation {
+	position: relative;
+	float: right;
+	width: 300px;
+	border: 1px solid #000;
+}
+#navigation ul {
+	margin: 0 auto;
+	padding: 0;
+}
+
+#navigation li{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: inline-block;
+	border: 1px solid #000;
+}
+
+#content {
+	margin-top: 5px;
+	position: relative;
+	float: left;
+	border: 1px solid #00FF00;
+	width: 990px;
+}
+
+#dynamic_content {
+	position: relative;
+	float: left;
+	margin-top: 5px;
+	margin-left: 30px;
+	margin-bottom: 5px;
+	width: 940px;
+	height: 500px;
+	border: 1px solid #000;
+}
+
+#dynamic_left {
+	position: relative;
+	float: left;
+	width: 600px;
+	height: 400px;
+	border: 1px solid #000;
+
+}
+#dynamic_right {
+	position: relative;
+	float: right;
+	width: 330px;
+	height: 400px;
+	border: 1px solid #000;
+}
+#right {
+	position: relative;
+	float: right;
+	width: 300px;
+	border: 1px solid #000;
+}
+
+#map {
+	position: relative;
+	float: right;
+	height: 300px;
+	width: 300px;
+	border: 1px solid #000;
+	margin-bottom: 10px;
+}
+#calendar {
+	position: relative;
+	height: 300px;
+	width: 300px;
+	border: 1px solid #000;
+}
+
+#footer {
+	position: relative;
+	float: left;
+	width: 1300px;
+	height: 50px;	
+	border: 1px solid #ff0000;
+	clear: both;
+}
+
+
+
