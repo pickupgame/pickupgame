@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
 </head>
 <body>
-	[body]
+	[body]stuff
 	<div id="container">
 		[container]
 		<div id="map">
