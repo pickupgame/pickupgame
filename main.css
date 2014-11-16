@@ -3,7 +3,6 @@ body {
 	padding: 0;
 }
 
-
 #container {
 	margin: 0 auto;
 	position: relative;
@@ -35,6 +34,7 @@ body {
 #navigation ul {
 	margin: 0 auto;
 	padding: 0;
+	list-style-type: none;
 }
 
 #navigation li{
@@ -42,7 +42,13 @@ body {
 	padding: 0;
 	position: relative;
 	display: inline-block;
-	border: 1px solid #000;
+	text-decoration: none;
+}
+#navigation ul li a{
+	text-decoration: none;
+	padding: .2em 1em;
+	color: #fff;
+	background-color: #036;
 }
 
 #content {
@@ -70,8 +76,8 @@ body {
 	width: 600px;
 	height: 400px;
 	border: 1px solid #000;
-
 }
+
 #dynamic_right {
 	position: relative;
 	float: right;
