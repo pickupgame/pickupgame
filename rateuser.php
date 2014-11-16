@@ -2,7 +2,7 @@
 <!-- buttons that will submit a query to increase the rating or decrease the rating -->
 <html>
 <head>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/javascript/jquery-1.11.1.js"></script>
 <script>
 $(function(){
 	var $ratings = $('#ratings');

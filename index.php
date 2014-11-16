@@ -9,6 +9,22 @@ $profile['UserID'] = "1235";
 	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 	<title>Pickup Game &copy;</title>
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
+
+
+<script src="javascript/jquery-1.11.1.js"></script>
+
+<script>
+$(function(){
+	<?php
+		if(isset($_GET['page']) && ($_GET['page'] == 'home' || $_GET['page'] == 'browse'))
+		{
+			echo "$('#dynamic_right').toggle();";
+			echo "$('#dynamic_left').css('width', '940px');";
+		}
+	?>
+})
+</script>
+
 </head>
 <body>
 	[body]
@@ -25,20 +41,7 @@ $profile['UserID'] = "1235";
 
 			<div id="navigation">
 				<!-- navigation -->
-				<ul>
-					<li><a href="index.php?page=home">Home</a></li>
-					<li>
-						<?php 
-							$status = "login";
-							if(isset($_SESSION['UserID']))
-							{
-								$status = "logout";							
-							}
-							echo "<a href='{$status}.php'>{$status}</a>";
-						?>
-					</li>
-					<li><a href="index.php?page=browse">Browse</a></li>
-				</ul>
+				<?php include('nav.php'); ?>
 			</div>
 
 		</div>
