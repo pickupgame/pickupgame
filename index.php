@@ -1,7 +1,6 @@
 <?php 
 error_reporting(E_ALL);
 session_start();
-$profile['UserID'] = "1235";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -28,13 +27,14 @@ $(function(){
 </head>
 <body>
 	[body]
+	
 	<div id="container">
 		[container]
 		<div id="map">
 			[map goes here]
 		</div>
 		<div id="header">
-			[header]
+			[header]<br>
 			<div id="logo">
 				[logo]
 			</div>
@@ -43,7 +43,7 @@ $(function(){
 				<!-- navigation -->
 				<?php include('nav.php'); ?>
 			</div>
-
+		<div id="clear"></div>
 		</div>
 
 		<div id="content">
