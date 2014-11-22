@@ -1,5 +1,6 @@
 <?php
 session_start();
-$_SESSION['UserID'] = "1234";
-header("Location: index.php");
+$_SESSION['UserID'] = "123";
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
+

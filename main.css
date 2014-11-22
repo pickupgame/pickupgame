@@ -135,5 +135,24 @@ body {
 	clear: both;
 }
 
+#gameDetails {
+	margin: 1px;
+	border: 1px solid #000;
+	width: 600px;
+}
 
+#playerDetails {
+	margin: 1px;
+	border: 1px solid #000;
+	width: 600px;
+}
 
+.button {
+	float: right;
+	display: block;
+	height: 10px;
+}
+
+table {
+	border: 1px solid #000;
+}

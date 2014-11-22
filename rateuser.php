@@ -1,7 +1,10 @@
 <!-- rate the host or user -->
 <!-- buttons that will submit a query to increase the rating or decrease the rating -->
-<html>
-<head>
+
+<?php
+$profile['UserID'] = "123"; //needs to be retrieved dynamically
+?>
+
 <script src="/javascript/jquery-1.11.1.js"></script>
 <script>
 $(function(){
@@ -34,14 +37,9 @@ $(function(){
 
 
 </script>
-</head>
-
-<body>
+<div id="rateUserUp">
 	<div id="input">
 		<span id="likes"></span><button id="like">+</button>
 		<span id="dislikes"></span><button id="dislike">-</button>
 	</div>
-
-</body>
-
-</html>
+</div>

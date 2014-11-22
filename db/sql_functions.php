@@ -1,5 +1,5 @@
 <?php
-include("../db/globals.php");
+include("globals.php");
 
 function dbConnect()
 {
@@ -11,6 +11,7 @@ function dbConnect()
     return $db;
 }
 
+
 function query($param, $querystring)
 {
     // echo "$querystring <br>";
@@ -20,7 +21,8 @@ function query($param, $querystring)
     $stmt->bind_param('s', $param);
     $stmt->execute();
     $query = $stmt->get_result();
-
+    // var_dump($query);
+    $db->close();
     if($query->num_rows > 0)
     {   
         return $query->fetch_all(MYSQLI_ASSOC); //returns a NUM indexed array with an associative inside for all rows.
@@ -40,6 +42,7 @@ function insertHostRating($PlayerEvaluated, $PlayerRater, $Rating)
     $stmt->bind_param('ssi', $PlayerEvaluated, $PlayerRater, $Rating);
     $stmt->execute();
     // echo $db->error;
+    $db->close();
     if($stmt->affected_rows > 0)
     {
         return TRUE;
@@ -55,7 +58,40 @@ function getLikes($UserID)
 {
     $sql = "select * from hostratinggame where PlayerEvaluated=?";
     $query = query($UserID, $sql);
-    return count($query);
+    if($query)
+    {
+        return count($query);    
+    }
+    else
+    {
+        return NULL;
+    }
+    
+}
+
+function getGamePlayers($Game_ID)
+{
+    $sql = "select PlayerID from gameplayer where GameID=?";
+    $query = query($Game_ID, $sql);
+    if($query)
+    {
+        return $query;
+    }
+    else
+        return NULL;
+}
+
+
+function getPlayerDetails($UserID)
+{
+    $sql = "select UserID, Name, Age, UserName, ImageLocation from userprofile where UserID=?";
+    $query = query($UserID, $sql);
+    if($query)
+    {
+        return $query[0];
+    }
+    else
+        return NULL;
 }
 
 
