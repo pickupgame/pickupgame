@@ -68,7 +68,7 @@ if ( isset($_POST["submit"]))
 		die();
 	}
 }
-print( "<form method = 'post' action = 'Register.php' id= 'submission'>");
+print( "<form method = 'post' id= 'submission'>");
 print("<table class=change>");
 foreach($inputlist as $inputname => $inputalt )
 {
@@ -101,7 +101,5 @@ if ($useridalreadyexist)
 	print ("<p class = 'error'>User Name Already Exist</p>");
 }
 print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Register'></p></form>");
-print("<form action= 'login.php'>");
-print("<input type = 'submit' value='Return To Login'></p>");
-print("</form>");
+print("<a href='index.php?page=login'>Return to Login</a><br>");
 ?>

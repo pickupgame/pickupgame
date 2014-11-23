@@ -39,7 +39,6 @@ if($username_notexist)
 	print("<p class = 'error'>The Username Does not Exist</p>");
 }
 print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Answer Security Questions'>   </form>");
-print("<form action= 'login.php'>");
-print("<input type = 'submit' value='Return To Login'></p>");
-print("</form>");
+print("<a href='index.php?page=login'>Return to Login</a><br>");
+
 ?>
