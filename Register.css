@@ -1,0 +1,11 @@
+.test		{
+				display:inline-block;
+				background-color: lightgrey;
+				border-color: lightgrey;
+			}
+table.change 	{
+					background-color:lightgrey;
+					border:0px;
+					width:100%;
+					text-align: left;
+				}
