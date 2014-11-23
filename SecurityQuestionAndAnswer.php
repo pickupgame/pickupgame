@@ -1,7 +1,7 @@
 <!-- SecurityQuestionAndAnswer.php-->
 <?php
 session_start();
-include('sql_functions.php');
+include('db/sql_functions.php');
 $UserID = isset($_SESSION["UserIDforSecurityQuestion"]) ? $_SESSION[ "UserIDforSecurityQuestion" ] : "";
 $SecurityQuestion= getSecurityQuestion($UserID);
 $SecurityAnswer = isset($_POST["SecurityAnswer"]) ? $_POST[ "SecurityAnswer" ] : "";

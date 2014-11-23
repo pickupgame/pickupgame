@@ -7,7 +7,12 @@
 			{
 				$status = "logout";							
 			}
-			echo "<a href='{$status}.php'>{$status}</a>";
+			if($status == "login")
+				echo "<a href='index.php?page={$status}'>{$status}</a>";	
+			else
+			{
+				echo "<a href='{$status}.php'>{$status}</a>";
+			}
 		?>
 	</li>
 	<li><a href="index.php?page=browse">Browse</a></li>

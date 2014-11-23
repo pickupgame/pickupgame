@@ -104,14 +104,25 @@ $(function(){
 										include("browse.php");
 									}
 								}
+								elseif ($_GET['page'] == 'login') {
+									include('login.php');						
+								}
+								elseif ($_GET['page'] == 'logout') {
+								}
+								elseif ($_GET['page'] == 'register') {
+									include('Register.php');
+								}
+								elseif ($_GET['page'] == 'forgot') {
+									include('ForgotPasswordGetUserName.php');
+								}
 								else
 								{
-									include('loginform.php');
+									include('login.php');
 								}
 							}
 							else
 							{
-								include('loginform.php');
+								include('login.php');
 							}	
 						}
 					?>

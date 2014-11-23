@@ -1,7 +1,7 @@
 <!-- Login.php-->
 <?php
-session_start();
-include('sql_functions.php');
+// session_start();
+include('db/sql_functions.php');
 $Username = isset($_POST["Username"]) ? $_POST[ "Username" ] : "";
 $Password = isset($_POST["Password"]) ? $_POST[ "Password" ] : "";
 $iserror=false;
@@ -40,7 +40,7 @@ if ( isset($_POST["submit"]))
 
 }
 print("<h1>Login</h1>");
-print( "<form method = 'post' action = 'login.php' id= 'submission'>");
+print( "<form method = 'post' id= 'submission'>");
 print("<div><label>Username:</label><input type = 'text' name = 'Username' value = {$Username}></div>");
 print("<div><label>Password:</label><input type = 'password' name = 'Password' value = {$Password}></div>");
 if($formerrors["Usernameerror"])
@@ -56,10 +56,8 @@ if($username_password_mismatch)
 	print("<p class = 'error'>The username and passwords do not match in our system</p>");
 }
 print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Login'></p></form>");
-print("<form action= 'ForgotPasswordGetUserName.php'>");
-print("<input type = 'submit' value='Forgot Password'>");
-print("</form>");
-print("<form action= 'Register.php'>");
-print("<input type = 'submit' value='Register'>");
+print("<a href='index.php?page=forgot'>Forgot Password</a><br>");
+print("<a href='index.php?page=register'>Register</a>");
+
 print("</form>");
 ?>

@@ -1,7 +1,7 @@
 <!-- GetPassword.php-->
 <?php
 session_start();
-include('sql_functions.php');
+include('db/sql_functions.php');
 $UserID = isset($_SESSION["UserIDforPasswordGet"]) ? $_SESSION[ "UserIDforPasswordGet" ] : "";
 $Password= getPassword(getUserName($UserID));
 print("<h1>Forgot Password</h1>");
