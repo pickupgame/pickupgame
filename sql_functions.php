@@ -129,7 +129,6 @@ function getSecurityQuestion($UserID)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
         $securityquestion=$row["SecurityQuestion"];
-        print($securityquestion);
     }
     if($query->num_rows > 0)
     {   
