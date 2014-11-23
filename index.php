@@ -121,7 +121,6 @@ $(function(){
 				</div>
 			</div>
 		</div>
-
 		<div id="right">
 			[right]
 			<div id="calendar">
