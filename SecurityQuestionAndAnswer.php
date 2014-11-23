@@ -17,7 +17,6 @@ if ( isset($_POST["submit"]))
 	}
 	if (!$iserror)
 	{
-		print(getSecurityAnswer($UserID));
 		if(getSecurityAnswer($UserID)==$SecurityAnswer)
 		{
 			$_SESSION["UserIDforPasswordGet"]=$UserID;
