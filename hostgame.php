@@ -39,8 +39,7 @@
 		if(!$iserror)
 		{
 			HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
-			print "You are now the host of a game.";
-			
+			print "You are now the host of a game.";			
 		}
 
 	}
@@ -56,7 +55,7 @@
 	echo "</select>";
 	echo "<br>Players:<input type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'>";
 	echo "<br>Password:<input type = 'password' name = 'Password' id = 'Password'>";
-	echo "<br>Description: <input type = 'text' name = 'Description' id = 'Description'>";
+	echo "<br>Description:<br> <textarea rows='4' cols='50' name = 'Description' id = 'Description'></textarea>";
 	echo "<br><input type='submit' name='submit' value = 'Host Game'></form>";
 	echo "<button type = 'button'>Cancel</button>";
 
