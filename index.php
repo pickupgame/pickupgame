@@ -115,6 +115,14 @@ $(function(){
 								elseif ($_GET['page'] == 'forgot') {
 									include('ForgotPasswordGetUserName.php');
 								}
+								elseif ($_GET['page'] == 'security')
+								{
+									include('SecurityQuestionAndAnswer.php');
+								}
+								elseif ($_GET['page'] == 'getpass')
+								{
+									include('GetPassword.php');
+								}
 								else
 								{
 									include('login.php');

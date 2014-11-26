@@ -18,7 +18,7 @@ if ( isset($_POST["submit"]))
 		if(CheckifUserNameExist($Username))
 		{
 			$_SESSION["UserIDforSecurityQuestion"]=getUserID($Username);
-			header('Location: SecurityQuestionAndAnswer.php');
+			header('Location: index.php?page=security');
 			die();
 		}
 		else
@@ -28,7 +28,7 @@ if ( isset($_POST["submit"]))
 	}
 }
 print("<h1>Forgot Password</h1>");
-print( "<form method = 'post' action = 'ForgotPasswordGetUserName.php' id= 'submission'>");
+print( "<form method = 'post' action = 'index.php?page=forgot' id= 'submission'>");
 print("<div><label>Username:</label><input type = 'text' name = 'Username' value = {$Username}></div>");
 if($formerrors["Usernameerror"])
 {

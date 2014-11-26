@@ -68,7 +68,7 @@ if ( isset($_POST["submit"]))
 		die();
 	}
 }
-print( "<form method = 'post' id= 'submission'>");
+print("<form method = 'post' id= 'submission'>");
 print("<table class=change>");
 foreach($inputlist as $inputname => $inputalt )
 {

@@ -20,7 +20,7 @@ if ( isset($_POST["submit"]))
 		if(getSecurityAnswer($UserID)==$SecurityAnswer)
 		{
 			$_SESSION["UserIDforPasswordGet"]=$UserID;
-			header('Location: GetPassword.php');
+			header('Location: index.php?page=getpass');
 			die();
 		}
 		else
@@ -45,7 +45,7 @@ if($SecurityAnswerIncorrect)
 	print("<p class = 'error'>The Security Question and Answer Do Not Match: Please Try Again</p>");
 }
 print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Validate'>   </form>");
-print("<form action= 'login.php'>");
+print("<form action= 'index.php?page=security'>");
 print("<input type = 'submit' value='Return To Login'></p>");
 print("</form>");
 ?>

@@ -23,10 +23,9 @@ if ( isset($_POST["submit"]))
 	{
 		if($Password==getPassword($Username))
 		{
-
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");
 			print("<p><span class = 'success'>Please click the link below to continue to use our system</span></p>");
-			print("<form action= 'http://google.com'>");
+			print("<form action= 'index.php'>");
 			print("<input type = 'submit' value='Continue'>");
 			print("</form>");
 			$_SESSION["UserID"]=getUserID($Username);
@@ -39,10 +38,12 @@ if ( isset($_POST["submit"]))
 	}
 
 }
+
 print("<h1>Login</h1>");
-print( "<form method = 'post' id= 'submission'>");
+print("<form method = 'post' id= 'submission'>");
 print("<div><label>Username:</label><input type = 'text' name = 'Username' value = {$Username}></div>");
 print("<div><label>Password:</label><input type = 'password' name = 'Password' value = {$Password}></div>");
+
 if($formerrors["Usernameerror"])
 {
 	print("<p class = 'error'>Please enter a Username that begins with letter first</p>");
@@ -55,9 +56,9 @@ if($username_password_mismatch)
 {
 	print("<p class = 'error'>The username and passwords do not match in our system</p>");
 }
+
 print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Login'></p></form>");
 print("<a href='index.php?page=forgot'>Forgot Password</a><br>");
 print("<a href='index.php?page=register'>Register</a>");
-
 print("</form>");
 ?>
