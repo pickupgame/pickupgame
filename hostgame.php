@@ -46,7 +46,7 @@
 	}
 
 	echo "<h1>Game Details</h1>";
-	echo "<form method = 'post' action='hostgame.php'> Name: <input type='text' name='GameName' id='GameName'>";
+	echo "<form method = 'post' action='index.php?page=hostgame'> Name: <input type='text' name='GameName' id='GameName'>";
 	echo "<br>Sport: <select name = 'Sport' id = 'Sport'>";
 		foreach($get_sports as $setsports)
 		{

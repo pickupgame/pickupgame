@@ -254,8 +254,6 @@ function getSports()
         return NULL;
     }
 
-    
-
 }
 
 function getGameDetails($GameID)

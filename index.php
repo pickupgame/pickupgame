@@ -123,6 +123,10 @@ $(function(){
 								{
 									include('GetPassword.php');
 								}
+								elseif($_GET['page'] == 'hostgame')
+								{
+									include('hostgame.php');
+								}
 								else
 								{
 									include('login.php');
