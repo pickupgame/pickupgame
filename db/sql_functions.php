@@ -1,5 +1,5 @@
 <?php
-include("../db/globals.php");
+include("globals.php");
 
 function dbConnect()
 {
