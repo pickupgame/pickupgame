@@ -235,6 +235,8 @@ function CheckifUserNameExist($UserName)
     $stmt->execute();
     $query = $stmt->get_result();
 
+}
+
 function getSports()
 {
     $db = dbConnect();
@@ -242,7 +244,7 @@ function getSports()
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $query = $stmt->get_result();
-
+    $db->close();
     if($query->num_rows > 0)
     {   
         return $result = $query->fetch_all(MYSQLI_ASSOC); 
@@ -252,7 +254,7 @@ function getSports()
         return NULL;
     }
 
-    mysql_close($db);
+    
 
 }
 
@@ -264,7 +266,7 @@ function getGameDetails($GameID)
     $stmt->bind_param('i', $GameID);
     $stmt->execute();
     $query = $stmt->get_result();
-
+    $db->close();
     if($query->num_rows > 0)
     {   
         return $query->fetch_all(MYSQLI_ASSOC); //returns a NUM indexed array with an associative inside for all rows.
@@ -274,7 +276,6 @@ function getGameDetails($GameID)
         return NULL;
     }
 
-     mysql_close($db);
 }
 
 // function getPlayerDetails($GameID)          // Pulls player details for Join Page (Not needed but available to use as this is Jake's functionality)
@@ -325,7 +326,7 @@ function getGameDetails($GameID)
 //     }
    
 //         return $detailsdisplayarray;
-//         mysql_close($db);
+//         $db->close();
 // }
 
 function HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude)
@@ -359,6 +360,7 @@ function DetermineNextUserID()
     $stmt->execute();
     $query = $stmt->get_result();
     $maxnum=max($query->fetch_all(MYSQLI_ASSOC));
+    $db->close();
     if($stmt->affected_rows > 0)
     {
         return $maxnum['UserID'] +1;
@@ -367,8 +369,6 @@ function DetermineNextUserID()
     {
         return 1;
     }
-
-     mysql_close($db);
 
 }
 
@@ -380,6 +380,7 @@ function JoinGame($GameID, $PlayerID)
     $stmt->bind_param('ii', $GameID, $PlayerID);
     $stmt->execute();
      // echo $db->error;
+    $db->close();
     if($stmt->affected_rows > 0)
     {
         return TRUE;
@@ -389,7 +390,7 @@ function JoinGame($GameID, $PlayerID)
         return FALSE;
     }
 
-     mysql_close($db);
+    
 }
 
 function checkGamePassword($GameID, $Password)
@@ -401,7 +402,7 @@ function checkGamePassword($GameID, $Password)
     $stmt->execute();
     $query = $stmt->get_result();
     $returnedpw = $query->fetch_all(MYSQLI_ASSOC);
-
+    $db->close();
     foreach ($returnedpw as $checkpw)
     {
         if($checkpw['Password'] === $Password)
@@ -414,7 +415,7 @@ function checkGamePassword($GameID, $Password)
         }
 
     }
-     mysql_close($db);
+    
 }
 
 function kickPlayer($GameID, $PlayerID)
@@ -424,9 +425,8 @@ function kickPlayer($GameID, $PlayerID)
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ii', $GameID,$PlayerID);
     $stmt->execute();
+    $db->close();
     return TRUE;
-    mysql_close($db);
 }
-
 
 ?>

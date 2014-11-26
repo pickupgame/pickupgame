@@ -57,8 +57,8 @@
 	echo "<br>Players:<input type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'>";
 	echo "<br>Password:<input type = 'password' name = 'Password' id = 'Password'>";
 	echo "<br>Description: <input type = 'text' name = 'Description' id = 'Description'>";
-		echo "<br><input type='submit' name='submit' value = 'Host Game'></form>";
-		echo "<button type = 'button'>Cancel</button>";
+	echo "<br><input type='submit' name='submit' value = 'Host Game'></form>";
+	echo "<button type = 'button'>Cancel</button>";
 
 
 ?>
