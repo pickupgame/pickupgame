@@ -25,8 +25,8 @@ if ( isset($_POST["submit"]))
 		{
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");
 			print("<p><span class = 'success'>Please click the link below to continue to use our system</span></p>");
-			print("<form action= 'index.php'>");
-			print("<input type = 'submit' value='Continue'>");
+			print("<form action= 'index.php?page=home'>");
+			print("<a href='index.php?page=home'>Continue</a>");
 			print("</form>");
 			$_SESSION["UserID"]=getUserID($Username);
 			die();

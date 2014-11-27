@@ -3,16 +3,20 @@ error_reporting(E_ALL);
 session_start();
 // $profile['UserID'] = "1234";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 	<title>Pickup Game &copy;</title>
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 <script src="javascript/jquery-1.11.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
 <script>
 $(function(){
 	<?php
@@ -40,121 +44,67 @@ $(function(){
 	?>
 })
 </script>
-	[body]
 	
-	<div id="container">
-		[container]
-		<div id="map">
-			[map goes here]
-		</div>
-		<div id="header">
-			[header]<br>
-			<div id="logo">
-				[logo]
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.php">PickUpGame</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 			</div>
-
-			<div id="navigation">
-				<!-- navigation -->
+			<div class="collapse navbar-collapse navHeaderCollapse">
 				<?php include('nav.php'); ?>
 			</div>
-		<div id="clear"></div>
-		</div>
 
-		<div id="content">
-			[content]
-			<div id="dynamic_content">
-				<p>[dynamic]</p>
-				<div id="dynamic_left">
-					<!-- [dynamic left] -->					
-					<?php 
-						if(isset($_SESSION['UserID']))
-						{
-							if(isset($_GET['page']))
-							{							
-								if ($_GET['page'] == 'browse')
-								{
-									if (isset($_GET['Game_ID']))
-									{
-										include("gameplayers.php");
-									}
-									else
-									{
-										include("browse.php");
-									}
-								}
-
-								if ($_GET['page'] == 'home') 
-								{
-									include("home.php");
-								}
-							}
-						}
-						else
-						{
-							if(isset($_GET['page']))
-							{							
-								if ($_GET['page'] == 'browse')
-								{
-									if (isset($_GET['Game_ID']))
-									{
-										include("gameplayers.php");
-									}	
-									else
-									{
-										include("browse.php");
-									}
-								}
-								elseif ($_GET['page'] == 'login') {
-									include('login.php');						
-								}
-								elseif ($_GET['page'] == 'logout') {
-								}
-								elseif ($_GET['page'] == 'register') {
-									include('Register.php');
-								}
-								elseif ($_GET['page'] == 'forgot') {
-									include('ForgotPasswordGetUserName.php');
-								}
-								elseif ($_GET['page'] == 'security')
-								{
-									include('SecurityQuestionAndAnswer.php');
-								}
-								elseif ($_GET['page'] == 'getpass')
-								{
-									include('GetPassword.php');
-								}
-								elseif($_GET['page'] == 'hostgame')
-								{
-									include('hostgame.php');
-								}
-								else
-								{
-									include('login.php');
-								}
-							}
-							else
-							{
-								include('login.php');
-							}	
-						}
-					?>
-				</div>
-				<div id="dynamic_right">
-					[dynamic right]
-				</div>
-			</div>
-		</div>
-		<div id="right">
-			[right]
-			<div id="calendar">
-				[calendar goes here]
-			</div>
-		</div>
-
-		<div id="footer">
-			[footer]
 		</div>
 	</div>
+
+
+	<div class="container" role="main">
+
+	<div class="row">
+		<div class="jumbotron col-sm-8 text-center">
+			<h1>Find and join sports locally!</h1>
+			<a class="btn btn-default">Get Started Now!</a>
+		</div>
+		<div class="col-sm-4">
+			<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
+		</div>
+	</div>
+	
+
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="panel panel-default">
+				  <div class="panel-body">
+				    <?php include('pagelogic.php'); ?>
+				  </div>
+				  <div class="panel-footer">Panel footer</div>
+				</div>				
+			</div>
+			<div class="col-sm-4">
+				stuff on the right
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
+
+		<div class="container">
+
+			<p class="navbar-text pull-left">Site Built by Derp</p>
+			<a class="navbar-btn btn btn-danger pull-right">Subscribe on Youtube</a>
+
+		</div>
+
+	</div>
+</body>
+</html>                                  		
 
 </body>
 </html>

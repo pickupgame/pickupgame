@@ -1,5 +1,5 @@
-<ul>
-	<li><a href="index.php?page=home">Home</a></li>
+<ul class="nav navbar-nav navbar-right">
+	<li class="active"><a href="index.php?page=home">Home</a></li>
 	<li>
 		<?php 
 			$status = "login";
@@ -17,4 +17,3 @@
 	</li>
 	<li><a href="index.php?page=browse">Browse</a></li>
 </ul>
-
