@@ -62,7 +62,7 @@ if ( isset($_POST["submit"]))
 		InsertNewUser($name, $age, $username, $password, $securityquestion, $securityanswer, $imagelocation);
 		print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY REGISTERED</span></p>");	
 		print("<p>Please select the following link to the login page where you can successfully register</p>");	
-		print("<form action= 'login.php'>");
+		print("<form action= 'index.php?page=login'>");
 		print("<input type = 'submit' value='Return To Login'></p>");
 		print("</form>");
 		die();

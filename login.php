@@ -23,17 +23,18 @@ if ( isset($_POST["submit"]))
 	{
 		if($Password==getPassword($Username))
 		{
-			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");
-			print("<p><span class = 'success'>Please click the link below to continue to use our system</span></p>");
-			print("<form action= 'index.php?page=home'>");
-			print("<a href='index.php?page=home'>Continue</a>");
-			print("</form>");
+			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");			
 			$_SESSION["UserID"]=getUserID($Username);
-			die();
+			// die();
+
+			//hide the login stuff since already logged in.
+			//die wont work here since index.php contains everything
+			echo "<div id='loginform' class='hide'>";
 		}
 		else
 		{
 			$username_password_mismatch=true;
+			echo "<div id='loginform'>";
 		}
 	}
 
@@ -61,4 +62,5 @@ print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Login'
 print("<a href='index.php?page=forgot'>Forgot Password</a><br>");
 print("<a href='index.php?page=register'>Register</a>");
 print("</form>");
+echo "</div>";
 ?>

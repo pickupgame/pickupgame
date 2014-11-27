@@ -23,6 +23,10 @@ $(function(){
 	//This area changes the display of the page depending on what is included in the URL.
 		if(isset($_GET['page']))
 		{
+			echo "$('#jumbotron-map').hide();";
+			echo "$('#map-low').show();";
+
+
 			if($_GET['page'] == 'browse')
 			{
 				
@@ -40,6 +44,10 @@ $(function(){
 					// echo "$('#dynamic_left').load('gameplayers.php', { Game_ID : '{$_GET['Game_ID']}' });";
 				}
 			}	
+		}
+		else
+		{
+			echo "$('#map-low').hide();";			
 		}
 	?>
 })
@@ -65,17 +73,18 @@ $(function(){
 
 	<div class="container" role="main">
 
-	<div class="row">
-		<div class="jumbotron col-sm-8 text-center">
-			<h1>Find and join sports locally!</h1>
-			<a class="btn btn-default">Get Started Now!</a>
+		<div id="jumbotron-map" class="row">
+			<div id="jumbotron" class="jumbotron col-sm-8 text-center">
+				<div class="container">
+					<h1>Find and join sports locally!</h1>
+					<a class="btn btn-default" href="index.php?page=browse">Get Started Now!</a>
+				</div>
+			</div>
+			<div class="col-sm-4 ">
+				<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
+			</div>
 		</div>
-		<div class="col-sm-4">
-			<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
-		</div>
-	</div>
 	
-
 		<div class="row">
 			<div class="col-sm-8">
 				<div class="panel panel-default">
@@ -85,24 +94,19 @@ $(function(){
 				  <div class="panel-footer">Panel footer</div>
 				</div>				
 			</div>
-			<div class="col-sm-4">
-				stuff on the right
+			<div id="map-low" class="col-sm-4">
+				<iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
 			</div>
 		</div>
 
 	</div>
 
-
 	<div class="navbar navbar-inverse navbar-fixed-bottom">
-
 		<div class="container">
-
-			<p class="navbar-text pull-left">Site Built by Derp</p>
-			<a class="navbar-btn btn btn-danger pull-right">Subscribe on Youtube</a>
-
+			<p class="navbar-text pull-left">PickupGame &copy 2014</p>
 		</div>
-
 	</div>
+
 </body>
 </html>                                  		
 
