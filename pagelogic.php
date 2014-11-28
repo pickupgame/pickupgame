@@ -7,7 +7,7 @@
 			{
 				if (isset($_GET['Game_ID']))
 				{
-					include("gameplayers.php");
+					include("viewgame.php");
 				}
 				else
 				{
@@ -40,7 +40,7 @@
 			{
 				if (isset($_GET['Game_ID']))
 				{
-					include("gameplayers.php");
+					include("viewgame.php");
 				}	
 				else
 				{
