@@ -1,5 +1,5 @@
 <?php 
-error_reporting(E_ALL);
+error_reporting(0);
 session_start();
 // $profile['UserID'] = "1234";
 ?>
@@ -92,7 +92,7 @@ $(function(){
 				  <div class="panel-body">
 				    <?php include('pagelogic.php'); ?>
 				  </div>
-				  <div class="panel-footer">Panel footer</div>
+				  <div class="panel-footer"></div>
 				</div>				
 			</div>
 			<div id="map-low" class="col-sm-4">

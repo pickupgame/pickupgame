@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	error_reporting(E_ALL);
 	include('db/sql_functions.php');
 	// Password & Description can be null (Everything else cannot)
 

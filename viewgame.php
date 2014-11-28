@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('/db/sql_functions.php');
 // error_reporting(E_ALL);
 
@@ -61,7 +62,10 @@ include('/db/sql_functions.php');
 			<td><?php echo getPlayerRating($v['UserID']);?></td>
 			<td><a href='index.php?rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
 			<td><a href='index.php?rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
-			<td><span class="glyphicon glyphicon-remove"></span></td>
+			<?php
+			if(isset($_SESSION['UserID']) && $_SESSION['UserID'] == $hostID)
+				echo '<td><span class="glyphicon glyphicon-remove"></span></td>';
+			?>
 			</tr>
 
 		<?php
