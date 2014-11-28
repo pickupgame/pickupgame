@@ -1,5 +1,5 @@
 <?php 
-error_reporting(0);
+error_reporting(E_ALL);
 session_start();
 // $profile['UserID'] = "1234";
 ?>

@@ -36,7 +36,7 @@ include('/db/sql_functions.php');
 		<div class="panel panel-info">
 			<div class="panel-heading">Game Details</div>
 		<table class='table table-striped'>
-			<tr><th>Game Name</th><td><?="{$gameData['GameName']}";?></td></tr>
+			<tr><th>Game Name</th><td><?="{$gameData['Name']}";?></td></tr>
 			<tr><th>Sport</th><td><?="{$gameData['Sport']}";?></td></tr>
 			<tr><th>Max Players</th><td><?="{$gameData['MaxPlayersNum']}";?></td></tr>
 			<tr><th>Private?</th><td><?php echo ($gameData['Private'] == 1 ? 'Yes' : 'No');; ?></td></tr>
