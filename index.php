@@ -6,6 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 	<title>Pickup Game &copy;</title>
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
@@ -81,7 +82,7 @@ $(function(){
 				</div>
 			</div>
 			<div class="col-sm-4 ">
-				<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
+				<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=16&center=42.3184%2C-83.2332&key=AIzaSyBQ2HZ1pLBo-ttxJyGzfl5KYn1vHP8XSMc"></iframe>
 			</div>
 		</div>
 	
@@ -95,7 +96,7 @@ $(function(){
 				</div>				
 			</div>
 			<div id="map-low" class="col-sm-4">
-				<iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=42.3223%2C-83.1763&key=AIzaSyCmc2khtUV2DTgUpcyYjpHLXrLE_YMVl_s"></iframe>
+				<iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=16&center=42.3184%2C-83.2332&key=AIzaSyBQ2HZ1pLBo-ttxJyGzfl5KYn1vHP8XSMc"></iframe>
 			</div>
 		</div>
 

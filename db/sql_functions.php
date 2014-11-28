@@ -56,7 +56,7 @@ function insertHostRating($PlayerEvaluated, $PlayerRater, $Rating)
 
 function getLikes($UserID)
 {
-    $sql = "select * from hostratinggame where PlayerEvaluated=?";
+    $sql = "SELECT * from hostratinggame where PlayerEvaluated=?";
     $query = query($UserID, $sql);
     if($query)
     {
@@ -71,7 +71,7 @@ function getLikes($UserID)
 
 function getGamePlayers($Game_ID)
 {
-    $sql = "select PlayerID from gameplayer where GameID=?";
+    $sql = "SELECT PlayerID from gameplayer where GameID=?";
     $query = query($Game_ID, $sql);
     if($query)
     {
@@ -84,7 +84,7 @@ function getGamePlayers($Game_ID)
 
 function getPlayerDetails($UserID)
 {
-    $sql = "select UserID, Name, Age, UserName, ImageLocation from userprofile where UserID=?";
+    $sql = "SELECT UserID, Name, Age, UserName, ImageLocation from userprofile where UserID=?";
     $query = query($UserID, $sql);
     if($query)
     {
@@ -92,6 +92,66 @@ function getPlayerDetails($UserID)
     }
     else
         return NULL;
+}
+function getPlayerRating($UserID)
+{
+    $db = dbConnect();
+    //positive ratings
+    $sql = "SELECT * FROM playerratinggame WHERE PlayerEvaluated = ? AND Rating = 1";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $positive = $query->num_rows;
+    //negative ratings
+    $sql = "SELECT * FROM playerratinggame WHERE PlayerEvaluated = ? AND Rating = 0";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $negative = $query->num_rows;
+    $db->close();    
+    return ($positive - $negative);
+}
+
+function getHostRating($UserID)
+{
+    $db = dbConnect();
+    //positive ratings
+    $sql = "SELECT * FROM hostratinggame WHERE PlayerEvaluated = ? AND Rating = 1";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $positive = $query->num_rows;
+    //negative ratings
+    $sql = "SELECT * FROM hostratinggame WHERE PlayerEvaluated = ? AND Rating = 0";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $negative = $query->num_rows;
+    $db->close();    
+    return ($positive - $negative);
+}
+
+function getHost($GameID)
+{
+    $db = dbConnect();
+    $sql = "SELECT Host_ID FROM game WHERE Game_ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $GameID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    if($query->num_rows > 0)
+    {
+        $result = $query->fetch_array(MYSQLI_ASSOC);
+        return $result['Host_ID'];
+    }
+    else
+    {
+        return NULL;
+    }
 }
 
 
@@ -229,7 +289,7 @@ function InsertNewUser($Name, $Age, $UserName, $Password, $SecurityQuestion, $Se
 function CheckifUserNameExist($UserName)
 {
     $db = dbConnect();
-    $sql = "select * from userprofile where UserName = ?";
+    $sql = "SELECT * from userprofile where UserName = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
@@ -240,7 +300,7 @@ function CheckifUserNameExist($UserName)
 function getSports()
 {
     $db = dbConnect();
-    $sql = "select SportName from sport";
+    $sql = "SELECT SportName from sport";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $query = $stmt->get_result();
@@ -259,7 +319,7 @@ function getSports()
 function getGameDetails($GameID)
 {
     $db = dbConnect();
-    $sql = "select * from game where Game_ID=?";
+    $sql = "SELECT * from game where Game_ID=?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('i', $GameID);
     $stmt->execute();
@@ -280,7 +340,7 @@ function getGameDetails($GameID)
 // {
    
 //     $db = dbConnect();
-//     $sql = "select PlayerID from gameplayer where GameID=?";
+//     $sql = "SELECT PlayerID from gameplayer where GameID=?";
 //     $stmt = $db->prepare($sql);
 //     $stmt->bind_param('i', $GameID);
 //     $stmt->execute();
@@ -294,7 +354,7 @@ function getGameDetails($GameID)
 //         $playerrating = 0;
 //         $playerrating2 = 0;
 //         $counter = 0;
-//         $ratingquery = "select Rating from playerratinggame where PlayerEvaluated = ?";
+//         $ratingquery = "SELECT Rating from playerratinggame where PlayerEvaluated = ?";
 //         $stmt = $db->prepare($ratingquery);
 //         $stmt->bind_param('i', $matchedID['PlayerID']);
 //         $stmt->execute();
@@ -309,7 +369,7 @@ function getGameDetails($GameID)
 //         }
 
 
-//         $playerdetailsquery = "select Name, Age from userprofile where UserID = ?";    
+//         $playerdetailsquery = "SELECT Name, Age from userprofile where UserID = ?";    
 //         $stmt = $db->prepare($playerdetailsquery);
 //         $stmt->bind_param('i', $matchedID['PlayerID']);
 //         $stmt->execute();
@@ -353,7 +413,7 @@ function HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $P
 function DetermineNextUserID()
 {
     $db = dbConnect();
-    $sql = "select UserID from userprofile";
+    $sql = "SELECT UserID from userprofile";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $query = $stmt->get_result();
@@ -394,7 +454,7 @@ function JoinGame($GameID, $PlayerID)
 function checkGamePassword($GameID, $Password)
 {
     $db = dbConnect();
-    $sql = "select Password from game where Game_ID=?";
+    $sql = "SELECT Password from game where Game_ID=?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('i', $GameID);
     $stmt->execute();

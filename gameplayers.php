@@ -21,22 +21,53 @@ include('/db/sql_functions.php');
 		}
 		foreach($gamePlayerIDs as $key => $playerID)
 		{
-			$playerDetails[$key] = getPlayerDetails($playerID);			
+			$playerDetails[$key] = getPlayerDetails($playerID);					
 		}
 		
-		echo "<table>";
+		$hostID = getHost($Game_ID);
+		$hostRating = getHostRating($hostID);
+		$hostData = getPlayerDetails($hostID);
+
+		?>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">Host</div>
+		<table class='table table-striped'>
+			<th>Name</th>
+			<th>Rating</th>
+			<th></th>
+			<th></th>			
+			<tr>
+				<td><?="{$hostData['Name']}";?></td>
+				<td><?="{$hostRating}";?></td>
+				<td><a href='index.php?rating=positive&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
+				<td><a href='index.php?rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
+			</tr>
+		</table>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Players</div>
+		<table class='table table-striped'>
+		<th>Name</th>
+		<th>Rating</th>
+		<th></th>
+		<th></th>
+		<?php
 		foreach($playerDetails as $k=>$v)
 		{
-			echo "<tr>";
+		?>
+			<tr>
+			<td><?="{$v['Name']}"?></td>
+			<td><?php echo getPlayerRating($v['UserID']);?></td>
+			<td><a href='index.php?rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
+			<td><a href='index.php?rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
+			<td><span class="glyphicon glyphicon-remove"></span></td>
+			</tr>
 
-			foreach($v as $key=> $value)
-			{
-				echo "<td>$value</td>";
-			}
-
-			echo "</tr>";
+		<?php
 		}
 		echo "</table>";
+		echo "</div>";
 	}
 	else
 	{

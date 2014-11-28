@@ -26,7 +26,7 @@ if ( isset($_POST["submit"]))
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");			
 			$_SESSION["UserID"]=getUserID($Username);
 			// die();
-
+			header('Location: index.php?page=home');
 			//hide the login stuff since already logged in.
 			//die wont work here since index.php contains everything
 			echo "<div id='loginform' class='hide'>";
