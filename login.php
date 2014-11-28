@@ -1,7 +1,7 @@
 <!-- Login.php-->
 <?php
 // session_start();
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 $Username = isset($_POST["Username"]) ? $_POST[ "Username" ] : "";
 $Password = isset($_POST["Password"]) ? $_POST[ "Password" ] : "";
 $iserror=false;

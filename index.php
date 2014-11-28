@@ -65,7 +65,7 @@ $(function(){
 				</button>
 			</div>
 			<div class="collapse navbar-collapse navHeaderCollapse">
-				<?php include('nav.php'); ?>
+				<?php include_once('nav.php'); ?>
 			</div>
 
 		</div>
@@ -90,7 +90,7 @@ $(function(){
 			<div class="col-sm-8">
 				<div class="panel panel-default">
 				  <div class="panel-body">
-				    <?php include('pagelogic.php'); ?>
+				    <?php include_once('pagelogic.php'); ?>
 				  </div>
 				  <div class="panel-footer"></div>
 				</div>				

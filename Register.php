@@ -1,7 +1,7 @@
 <!-- Register.php-->
 <?php
 print("<h2>Registration Information</h2>");
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 session_start();
 $name = isset($_POST["name"]) ? $_POST[ "name" ] : "";
 $age = isset($_POST["age"]) ? $_POST[ "age" ] : "";

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include('db/sql_functions.php');
+	include_once('db/sql_functions.php');
 	// Password & Description can be null (Everything else cannot)
 
 	$GameName = isset($_POST["GameName"]) ? $_POST["GameName"] : "";

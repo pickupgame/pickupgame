@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('/db/sql_functions.php');
+include_once('/db/sql_functions.php');
 // error_reporting(E_ALL);
 
 	$Game_ID = $_GET['Game_ID'];

@@ -1,6 +1,6 @@
 <?php
 //home page
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 
 $user = getPlayerDetails($_SESSION['UserID']);
 

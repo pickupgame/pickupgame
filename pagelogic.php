@@ -7,20 +7,20 @@
 			{
 				if (isset($_GET['Game_ID']))
 				{
-					include("viewgame.php");
+					include_once("viewgame.php");
 				}
 				else
 				{
-					include("browse.php");
+					include_once("browse.php");
 				}
 			}
 			elseif ($_GET['page'] == 'home') 
 			{
-				include("home.php");
+				include_once("home.php");
 			}
 			elseif($_GET['page'] == 'hostgame')
 			{
-				include('hostgame.php');
+				include_once('hostgame.php');
 			}
 			elseif($_GET['page'] == 'login')
 			{
@@ -29,7 +29,7 @@
 		}
 		else
 		{
-			include("home.php");
+			include_once("home.php");
 		}
 	}
 	else
@@ -40,44 +40,44 @@
 			{
 				if (isset($_GET['Game_ID']))
 				{
-					include("viewgame.php");
+					include_once("viewgame.php");
 				}	
 				else
 				{
-					include("browse.php");
+					include_once("browse.php");
 				}
 			}
 			elseif ($_GET['page'] == 'login') {
-				include('login.php');						
+				include_once('login.php');						
 			}
 			elseif ($_GET['page'] == 'logout') {
 			}
 			elseif ($_GET['page'] == 'register') {
-				include('Register.php');
+				include_once('Register.php');
 			}
 			elseif ($_GET['page'] == 'forgot') {
-				include('ForgotPasswordGetUserName.php');
+				include_once('ForgotPasswordGetUserName.php');
 			}
 			elseif ($_GET['page'] == 'security')
 			{
-				include('SecurityQuestionAndAnswer.php');
+				include_once('SecurityQuestionAndAnswer.php');
 			}
 			elseif ($_GET['page'] == 'getpass')
 			{
-				include('GetPassword.php');
+				include_once('GetPassword.php');
 			}
 			elseif($_GET['page'] == 'hostgame')
 			{
-				include('hostgame.php');
+				include_once('hostgame.php');
 			}
 			else
 			{
-				include('login.php');
+				include_once('login.php');
 			}
 		}
 		else
 		{
-			include('login.php');
+			include_once('login.php');
 		}	
 	}
 ?>

@@ -1,7 +1,7 @@
 <!-- ForgotPasswordGetUserName.php-->
 <?php
 session_start();
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 $Username = isset($_POST["Username"]) ? $_POST[ "Username" ] : "";
 $iserror=false;
 $formerrors = array("Usernameerror"=> false);
