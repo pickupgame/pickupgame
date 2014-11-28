@@ -35,21 +35,73 @@ function query($param, $querystring)
 
 function insertHostRating($PlayerEvaluated, $PlayerRater, $Rating)
 {
-    $db = dbConnect();
-    $sql = "INSERT INTO `hostratinggame` (PlayerEvaluated, PlayerRater, Rating)
-    VALUES (?, ?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param('ssi', $PlayerEvaluated, $PlayerRater, $Rating);
-    $stmt->execute();
-    // echo $db->error;
-    $db->close();
-    if($stmt->affected_rows > 0)
+    if($PlayerEvaluated == $PlayerRater)
     {
-        return TRUE;
+        echo "<span class='text-danger'>You cannot rate yourself.</span>";
+        return FALSE;
     }
     else
     {
+
+        if(!checkHostRatedAlready($PlayerRater, $PlayerEvaluated))
+        {
+            $db = dbConnect();
+            $sql = "INSERT INTO `hostratinggame` (PlayerEvaluated, PlayerRater, Rating)
+            VALUES (?, ?, ?)";
+            $stmt = $db->prepare($sql);
+            $stmt->bind_param('ssi', $PlayerEvaluated, $PlayerRater, $Rating);
+            $stmt->execute();
+            // echo $db->error;
+            $db->close();
+            if($stmt->affected_rows > 0)
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        else
+        {
+            echo "You already rated that host!";
+            return FALSE;            
+        }
+    }
+}
+function insertPlayerRating($PlayerEvaluated, $PlayerRater, $Rating)
+{
+    if($PlayerEvaluated == $PlayerRater)
+    {
+        echo "<span class='text-danger'>You cannot rate yourself.</span>";
         return FALSE;
+    }
+    else
+    {
+        if(!checkPlayerRatedAlready($PlayerRater, $PlayerEvaluated))
+        {
+            $db = dbConnect();
+            $sql = "INSERT INTO `playerratinggame` (PlayerEvaluated, PlayerRater, Rating)
+            VALUES (?, ?, ?)";
+            $stmt = $db->prepare($sql);
+            $stmt->bind_param('ssi', $PlayerEvaluated, $PlayerRater, $Rating);
+            $stmt->execute();
+            // echo $db->error;
+            $db->close();
+            if($stmt->affected_rows > 0)
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        else
+        {
+            echo "You already rated that player!";
+            return FALSE;            
+        }
     }
 }
 
@@ -311,15 +363,22 @@ function getSecurityAnswer($UserID)
 function InsertNewUser($Name, $Age, $UserName, $Password, $SecurityQuestion, $SecurityAnswer, $ImageLocation)
 {
     $db = dbConnect();
-    $sql = "INSERT INTO `userprofile` (Name, Age, UserName, Password, SecurityQuestion, SecurityAnswer, ImageLocation)
-    VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param('sisssss', $Name, $Age, $UserName, $Password, $SecurityQuestion, $SecurityAnswer, $ImageLocation);
-    $stmt->execute();
-    // echo $db->error;
-    if($stmt->affected_rows > 0)
+    if(!CheckifUserNameExist($UserName))
     {
-        return TRUE;
+        $sql = "INSERT INTO `userprofile` (Name, Age, UserName, Password, SecurityQuestion, SecurityAnswer, ImageLocation)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('sisssss', $Name, $Age, $UserName, $Password, $SecurityQuestion, $SecurityAnswer, $ImageLocation);
+        $stmt->execute();
+        // echo $db->error;
+        if($stmt->affected_rows > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
     else
     {
@@ -336,6 +395,44 @@ function CheckifUserNameExist($UserName)
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
     $query = $stmt->get_result();
+
+}
+function checkHostRatedAlready($PlayerRater, $PlayerEvaluated)
+{
+    $db = dbConnect();    
+    $sql = "SELECT * from hostratinggame where PlayerRater=? AND PlayerEvaluated=?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ii', $PlayerRater, $PlayerEvaluated);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+    if($query->num_rows > 0)
+    {   
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+
+}
+function checkPlayerRatedAlready($PlayerRater, $PlayerEvaluated)
+{
+    $db = dbConnect();    
+    $sql = "SELECT * from playerratinggame where PlayerRater=? AND PlayerEvaluated=?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ii', $PlayerRater, $PlayerEvaluated);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+    if($query->num_rows > 0)
+    {   
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
 
 }
 

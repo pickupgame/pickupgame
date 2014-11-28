@@ -1,8 +1,12 @@
 <?php 
 	if(isset($_SESSION['UserID']))
 	{
-		if(isset($_GET['page']))
-		{							
+		if(isset($_GET['rating']))
+		{
+			include_once('rating.php');
+		}
+		elseif(isset($_GET['page']))
+		{										
 			if ($_GET['page'] == 'browse')
 			{
 				if (isset($_GET['Game_ID']))
