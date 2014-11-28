@@ -4,7 +4,7 @@ include_once('db/sql_functions.php');
 
 $user = getPlayerDetails($_SESSION['UserID']);
 
-echo "Welcome {$user['UserName']}!<br>";
+echo "Welcome, {$user['UserName']}!<br>";
 $hostGames = getHostGames($user['UserID']);
 $playerGames = getPlayerGames($user['UserID']);
 
