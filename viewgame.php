@@ -28,9 +28,24 @@ include('/db/sql_functions.php');
 		$hostID = getHost($Game_ID);
 		$hostRating = getHostRating($hostID);
 		$hostData = getPlayerDetails($hostID);
+		$gameExists = getGameDetails($Game_ID);
+		if($gameExists)
+			$gameData = $gameExists[0];
 
 		?>
-
+		<div class="panel panel-info">
+			<div class="panel-heading">Game Details</div>
+		<table class='table table-striped'>
+			<tr><th>Game Name</th><td><?="{$gameData['GameName']}";?></td></tr>
+			<tr><th>Sport</th><td><?="{$gameData['Sport']}";?></td></tr>
+			<tr><th>Max Players</th><td><?="{$gameData['MaxPlayersNum']}";?></td></tr>
+			<tr><th>Private?</th><td><?php echo ($gameData['Private'] == 1 ? 'Yes' : 'No');; ?></td></tr>
+			<tr><th>Description</th><td><?="{$gameData['Description']}";?></td></tr>
+			<tr><th>DateAndTime</th><td><?="{$gameData['DateAndTime']}";?></td></tr>
+			<tr><th>Latitude</th><td><?="{$gameData['Latitude']}";?></td></tr>
+			<tr><th>Longitude</th><td><?="{$gameData['Longitude']}";?></td></tr>
+		</table>
+		</div>
 		<div class="panel panel-info">
 			<div class="panel-heading">Host</div>
 		<table class='table table-striped'>
