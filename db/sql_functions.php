@@ -536,19 +536,22 @@ function kickPlayer($GameID, $PlayerID)
 
 function displayGames($GameDetails, $type)
 {
-    echo "<div class='table-responsive'>";
-    echo "<table class='table table-striped'>";
+    echo "<table class='table table-striped table-condensed'>";
     foreach($GameDetails as $index=>$game)
     {
-        
+        echo "<th>Name</th>";
+        echo "<th>Sport</th>";
+        echo "<th>Date and Time</th>";
+        echo "<th></th>";
         echo "<tr>";
         echo "<td>{$game['Name']}</td>";
+        echo "<td>{$game['Sport']}</td>";
+        echo "<td>{$game['DateAndTime']}</td>";
+        echo "<td><a href='index.php?page=browse&Game_ID={$game['Game_ID']}'>View Details</a></td>";
         echo "</tr>";
         
     }
     echo "</table>";
-    echo "</div>";
-
 }
 
 
