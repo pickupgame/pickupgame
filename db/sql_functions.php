@@ -527,13 +527,16 @@ function kickPlayer($GameID, $PlayerID)
     $stmt->bind_param('ii', $GameID,$PlayerID);
     $stmt->execute();
     $db->close();
-    return TRUE;
+    if($stmt->affected_rows == 1)
+        return TRUE;
+    else
+        return FALSE;
 }
 
 
-function displayGames($GameDetails)
+function displayGames($GameDetails, $type)
 {
- 
+    echo "<div class='table-responsive'>";
     echo "<table class='table table-striped'>";
     foreach($GameDetails as $index=>$game)
     {
@@ -544,6 +547,7 @@ function displayGames($GameDetails)
         
     }
     echo "</table>";
+    echo "</div>";
 
 }
 
