@@ -644,7 +644,7 @@ function displayGames($GameDetails, $type)
         echo "<td>{$game['Name']}</td>";
         echo "<td>{$game['Sport']}</td>";
         echo "<td>{$game['DateAndTime']}</td>";
-        echo "<td><a href='index.php?page=browse&Game_ID={$game['Game_ID']}'>View Details</a></td>";
+        echo "<td><a class='btn btn-info btn-xs' href='index.php?page=browse&Game_ID={$game['Game_ID']}'>View Details</a></td>";
         echo "</tr>";
         
     }
