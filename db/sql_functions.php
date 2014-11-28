@@ -154,6 +154,48 @@ function getHost($GameID)
     }
 }
 
+//These getGames functions are for home page functionality. If the user is logged in, it will display their hosted and participating games.
+function getHostGames($UserID)
+{
+    $db = dbConnect();
+    $sql = "SELECT * FROM game WHERE Host_ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    if($query->num_rows > 0)
+    {
+        $result = $query->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+function getPlayerGames($UserID)
+{
+    $db = dbConnect();
+    $sql = "SELECT GameID FROM gameplayer WHERE PlayerID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    if($query->num_rows > 0)
+    {
+        $result = $query->fetch_all(MYSQLI_ASSOC);        
+        //get game details for each game returned
+        return getGameDetails($UserID);
+    }
+    else
+    {
+        return NULL;
+    }
+
+
+
+}
 
 function getPassword($UserName)
 {
@@ -336,6 +378,7 @@ function getGameDetails($GameID)
 
 }
 
+
 // function getPlayerDetails($GameID)          // Pulls player details for Join Page (Not needed but available to use as this is Jake's functionality)
 // {
    
@@ -486,5 +529,23 @@ function kickPlayer($GameID, $PlayerID)
     $db->close();
     return TRUE;
 }
+
+
+function displayGames($GameDetails)
+{
+ 
+    echo "<table class='table table-striped'>";
+    foreach($GameDetails as $index=>$game)
+    {
+        
+        echo "<tr>";
+        echo "<td>{$game['Name']}</td>";
+        echo "</tr>";
+        
+    }
+    echo "</table>";
+
+}
+
 
 ?>
