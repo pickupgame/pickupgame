@@ -65,10 +65,6 @@ include_once('/db/sql_functions.php');
 			{
 				$playerDetails[$key] = getPlayerDetails($playerID);					
 			}
-		
-		
-
-
 		?>
 
 			<div class="panel panel-info">
