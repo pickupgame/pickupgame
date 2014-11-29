@@ -583,24 +583,54 @@ function DetermineNextUserID()
 
 }
 
+function userInGame($PlayerID, $GameID)
+{
+    $db = dbConnect();
+    $sql = "SELECT * FROM gameplayer WHERE GameID=? AND PlayerID=?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ii', $GameID, $PlayerID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+     // echo $db->error;
+    $db->close();
+    if($query->num_rows > 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }   
+
+
+}
+
 function JoinGame($GameID, $PlayerID)
 {
     //cant allow host to join his own game as a player
     if(getHost($GameID) != $PlayerID)
     {
-        $db = dbConnect();
-        $sql = "INSERT INTO `gameplayer` (GameID, PlayerID) VALUES (?, ?)";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param('ii', $GameID, $PlayerID);
-        $stmt->execute();
-         // echo $db->error;
-        $db->close();
-        if($stmt->affected_rows > 0)
+        if(!userInGame($PlayerID, $GameID))
         {
-            return TRUE;
+            $db = dbConnect();
+            $sql = "INSERT INTO `gameplayer` (GameID, PlayerID) VALUES (?, ?)";
+            $stmt = $db->prepare($sql);
+            $stmt->bind_param('ii', $GameID, $PlayerID);
+            $stmt->execute();
+             // echo $db->error;
+            $db->close();
+            if($stmt->affected_rows > 0)
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
         }
         else
         {
+            echo "<span class='text-danger'>You are already in the game.</span>";
             return FALSE;
         }
     }
@@ -638,16 +668,19 @@ function checkGamePassword($GameID, $Password)
 
 function kickPlayer($GameID, $PlayerID)
 {
-    $db = dbConnect();
-    $sql = "DELETE FROM gameplayer where GameID=? AND PlayerID = ?";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param('ii', $GameID,$PlayerID);
-    $stmt->execute();
-    $db->close();
-    if($stmt->affected_rows == 1)
-        return TRUE;
-    else
-        return FALSE;
+    if(userInGame($PlayerID, $GameID))
+    {
+        $db = dbConnect();
+        $sql = "DELETE FROM gameplayer where GameID=? AND PlayerID = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('ii', $GameID,$PlayerID);
+        $stmt->execute();
+        $db->close();
+        if($stmt->affected_rows == 1)
+            return TRUE;
+        else
+            return FALSE;
+    }
 }
 
 
