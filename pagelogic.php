@@ -12,6 +12,17 @@
 				if (isset($_GET['Game_ID']))
 				{
 					include_once("viewgame.php");
+					if(isset($_GET['action']))
+					{
+						if($_GET['action'] == 'join')
+						{
+							JoinGame($Game_ID, $_SESSION['UserID']);
+						}
+						if($_GET['action'] == 'leave')
+						{
+							kickPlayer($Game_ID, $_SESSION['UserID']);					
+						}
+					}
 				}
 				else
 				{

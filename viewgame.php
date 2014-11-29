@@ -11,26 +11,15 @@ include_once('/db/sql_functions.php');
 	// echo "</pre>";
 	$gamePlayerIDs = array();
 	$playerDetails = array();
-	if($gamePlayers !== NULL)
-	{
-		foreach($gamePlayers as $k => $player)
-		{			
-			// echo "{$player['PlayerID']} <br>";
-			//store ids for retrieval of personal info
-			$gamePlayerIDs[$k] = $player['PlayerID'];
+	$hostID = getHost($Game_ID);
+	$hostRating = getHostRating($hostID);
+	$hostData = getPlayerDetails($hostID);
+	$gameExists = getGameDetails($Game_ID);
+	if($gameExists)
+		$gameData = $gameExists[0];
 
-		}
-		foreach($gamePlayerIDs as $key => $playerID)
-		{
-			$playerDetails[$key] = getPlayerDetails($playerID);					
-		}
-		
-		$hostID = getHost($Game_ID);
-		$hostRating = getHostRating($hostID);
-		$hostData = getPlayerDetails($hostID);
-		$gameExists = getGameDetails($Game_ID);
-		if($gameExists)
-			$gameData = $gameExists[0];
+	if($gamePlayers || $hostID )
+	{
 
 		?>
 		<div class="panel panel-info">
@@ -60,33 +49,62 @@ include_once('/db/sql_functions.php');
 				<td><a href='index.php?page=browse&rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
 			</tr>
 		</table>
-		</div>
-		<div class="panel panel-info">
-			<div class="panel-heading">Players</div>
-		<table class='table table-striped'>
-		<th>Name</th>
-		<th>Rating</th>
-		<th></th>
-		<th></th>
-		<?php
-		foreach($playerDetails as $k=>$v)
-		{
-		?>
-			<tr>
-			<td><?="{$v['Name']}"?></td>
-			<td><?php echo getPlayerRating($v['UserID']);?></td>
-			<td><a href='index.php?page=browse&rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
-			<td><a href='index.php?page=browse&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
-			<?php
-			if(isset($_SESSION['UserID']) && $_SESSION['UserID'] == $hostID)
-				echo '<td><span class="glyphicon glyphicon-remove"></span></td>';
-			?>
-			</tr>
+		</div>		
 
 		<?php
+		if($gamePlayers)
+		{
+			foreach($gamePlayers as $k => $player)
+			{			
+				// echo "{$player['PlayerID']} <br>";
+				//store ids for retrieval of personal info
+				$gamePlayerIDs[$k] = $player['PlayerID'];
+
+			}
+			foreach($gamePlayerIDs as $key => $playerID)
+			{
+				$playerDetails[$key] = getPlayerDetails($playerID);					
+			}
+		
+		
+
+
+		?>
+
+			<div class="panel panel-info">
+				<div class="panel-heading">Players</div>
+			<table class='table table-striped'>
+			<th>Name</th>
+			<th>Rating</th>
+			<th></th>
+			<th></th>
+			<?php
+			foreach($playerDetails as $k=>$v)
+			{
+				?>
+				<tr>
+				<td><?="{$v['Name']}"?></td>
+				<td><?php echo getPlayerRating($v['UserID']);?></td>
+				<td><a href='index.php?page=browse&rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
+				<td><a href='index.php?page=browse&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
+				<?php
+				if(isset($_SESSION['UserID']) && $_SESSION['UserID'] == $hostID)
+					echo '<td><a class="glyphicon glyphicon-remove"></a></td>';
+				?>
+				</tr>
+
+				<?php
+			}
+			echo "</table>";
+			echo "</div>";
+
 		}
-		echo "</table>";
-		echo "</div>";
+		if($_SESSION['UserID'] != $hostID)
+		{
+			echo "<a class='btn btn-danger pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=leave'>Leave Game</a>";
+			echo "<a class='btn btn-info pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=join'>Join Game</a>";
+		}
+		
 	}
 	else
 	{

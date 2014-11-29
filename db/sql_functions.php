@@ -238,7 +238,12 @@ function getPlayerGames($UserID)
     {
         $result = $query->fetch_all(MYSQLI_ASSOC);        
         //get game details for each game returned
-        return getGameDetails($UserID);
+        $games = array();
+        foreach($result as $v)
+        {
+             $games = getGameDetails($v['GameID']);
+        }
+        return $games;
     }
     else
     {
@@ -527,13 +532,13 @@ function getGameDetails($GameID)
 //         $db->close();
 // }
 
-function HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude)
+function HostGame($Name, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude)
 {
     $db = dbConnect();
-    $sql = "INSERT INTO `game` (GameName, Sport, MaxPlayersNum, DateAndTime, Password, Private, Host_ID, Description, Latitude, Longitude)
+    $sql = "INSERT INTO `game` (Name, Sport, MaxPlayersNum, DateAndTime, Password, Private, Host_ID, Description, Latitude, Longitude)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param('ssissiisdd', $GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
+    $stmt->bind_param('ssissiisdd', $Name, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
     $stmt->execute();
 
     // echo $db->error;
@@ -572,23 +577,30 @@ function DetermineNextUserID()
 
 function JoinGame($GameID, $PlayerID)
 {
-    $db = dbConnect();
-    $sql = "INSERT INTO `gameplayer` (GameID, PlayerID) VALUES (?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param('ii', $GameID, $PlayerID);
-    $stmt->execute();
-     // echo $db->error;
-    $db->close();
-    if($stmt->affected_rows > 0)
+    //cant allow host to join his own game as a player
+    if(getHost($GameID) != $PlayerID)
     {
-        return TRUE;
+        $db = dbConnect();
+        $sql = "INSERT INTO `gameplayer` (GameID, PlayerID) VALUES (?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('ii', $GameID, $PlayerID);
+        $stmt->execute();
+         // echo $db->error;
+        $db->close();
+        if($stmt->affected_rows > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
     else
     {
         return FALSE;
     }
-
-    
+ 
 }
 
 function checkGamePassword($GameID, $Password)

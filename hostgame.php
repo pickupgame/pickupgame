@@ -21,13 +21,13 @@
 	{
 	    if ($GameName == "") {
 	        $iserror = true;
-	        print "<p>You must enter in a game name.</p>";
+	        print "<p class='text-danger'>You must enter in a game name.</p>";
 	    } 
 
 	    if($Latitude == "" && $Longitude == "")
 	    {
 	    	$iserror = true;
-	    	print "<p>You must choose a location.</p>";
+	    	print "<p class='text-danger'>You must choose a location.</p>";
 	    }
 
 	    if($Password != "")
@@ -39,25 +39,26 @@
 		if(!$iserror)
 		{
 			HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
-			print "You are now the host of a game.";			
+			print "<p class='text-success'>You are now the host of a game.</p>";			
 		}
 
 	}
 
 	echo "<h1>Game Details</h1>";
-	echo "<form method = 'post' action='index.php?page=hostgame'> Name: <input type='text' name='GameName' id='GameName'>";
-	echo "<br>Sport: <select name = 'Sport' id = 'Sport'>";
+	echo "<form method = 'post' action='index.php?page=hostgame'> Name: <input class='form-control' type='text' name='GameName' id='GameName'>";
+	echo "<br>Sport: <select class='form-control' name = 'Sport' id = 'Sport'>";
 		foreach($get_sports as $setsports)
 		{
 			print "<option value = '" . $setsports["SportName"] . "'>" . $setsports["SportName"] . "</option>";
 		}
 
 	echo "</select>";
-	echo "<br>Players:<input type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'>";
-	echo "<br>Password:<input type = 'password' name = 'Password' id = 'Password'>";
-	echo "<br>Description:<br> <textarea rows='4' cols='50' name = 'Description' id = 'Description'></textarea>";
-	echo "<br><input class='btn btn-info' type='submit' name='submit' value = 'Host Game'></form>";
-	echo "<button class='btn btn-danger btn-xs' type = 'button'>Cancel</button>";
+	echo "<br>Players:<input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'>";
+	echo "<br>Password:<input class='form-control' type = 'password' name = 'Password' id = 'Password'>";
+	echo "<br>Description:<br> <textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea><br>";
+	echo "<button class='btn btn-danger pull-right' type = 'button'>Cancel</button>";
+	echo "<input class='btn btn-info pull-right' type='submit' name='submit' value = 'Host Game'></form>";
+	
 
 
 ?>
