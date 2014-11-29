@@ -54,10 +54,10 @@ $(function(){
 })
 </script>
 	
-	<div class="navbar navbar-inverse navbar-static-top">
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php">PickUpGame</a>
+				<a class="navbar-brand brand-info" href="index.php">PickUpGame</a>
 				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -69,7 +69,7 @@ $(function(){
 			</div>
 
 		</div>
-	</div>
+	</nav>
 
 
 	<div class="container" role="main">
@@ -78,7 +78,7 @@ $(function(){
 			<div id="jumbotron" class="jumbotron col-sm-8 text-center">
 				<div class="container">
 					<h1>Find and join a game locally!</h1>
-					<a class="btn btn-info" href="index.php?page=browse">Get Started Now!</a>
+					<a class="btn btn-primary" href="index.php?page=browse">Get Started Now!</a>
 				</div>
 			</div>
 			<div class="col-sm-4 ">
