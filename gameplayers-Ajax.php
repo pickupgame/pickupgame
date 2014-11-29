@@ -1,7 +1,7 @@
 <?php
 //needs to be retrieved dynamically
-// echo $_POST['Game_ID'];
-// $_POST['Game_ID'] = "123";
+echo $_POST['Game_ID'];
+$_POST['Game_ID'] = "123";
 ?>
 <script>
 $(function(){
