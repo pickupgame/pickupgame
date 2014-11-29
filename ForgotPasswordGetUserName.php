@@ -16,7 +16,7 @@ if ( isset($_POST["submit"]))
 	if (!$iserror)
 	{
 		if(CheckifUserNameExist($Username))
-		{
+		{			
 			$_SESSION["UserIDforSecurityQuestion"]=getUserID($Username);
 			header('Location: index.php?page=security');
 			die();
@@ -38,7 +38,7 @@ if($username_notexist)
 {
 	print("<p class = 'error'>The Username Does not Exist</p>");
 }
-print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Answer Security Questions'>   </form>");
-print("<a href='index.php?page=login'>Return to Login</a><br>");
+print( "<p class = 'head'><input class='btn btn-info btn-xs' type = 'submit' name = 'submit' value = 'Answer Security Questions'>   </form>");
+print("<a class='btn btn-warning btn-xs' href='index.php?page=login'>Return to Login</a><br>");
 
 ?>

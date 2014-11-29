@@ -400,6 +400,14 @@ function CheckifUserNameExist($UserName)
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
     $query = $stmt->get_result();
+    if($query->num_rows > 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
 
 }
 function checkHostRatedAlready($PlayerRater, $PlayerEvaluated)

@@ -78,7 +78,7 @@ $(function(){
 			<div id="jumbotron" class="jumbotron col-sm-8 text-center">
 				<div class="container">
 					<h1>Find and join a game locally!</h1>
-					<a class="btn btn-default" href="index.php?page=browse">Get Started Now!</a>
+					<a class="btn btn-info" href="index.php?page=browse">Get Started Now!</a>
 				</div>
 			</div>
 			<div class="col-sm-4 ">

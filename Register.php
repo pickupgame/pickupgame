@@ -63,7 +63,7 @@ if ( isset($_POST["submit"]))
 		print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY REGISTERED</span></p>");	
 		print("<p>Please select the following link to the login page where you can successfully register</p>");	
 		print("<form action= 'index.php?page=login'>");
-		print("<input type = 'submit' value='Return To Login'></p>");
+		print("<input class='btn btn-warning btn-xs' type = 'submit' value='Return To Login'></p>");
 		print("</form>");
 		die();
 	}
@@ -100,6 +100,6 @@ if ($useridalreadyexist)
 {
 	print ("<p class = 'error'>User Name Already Exist</p>");
 }
-print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Register'></p></form>");
-print("<a href='index.php?page=login'>Return to Login</a><br>");
+print( "<p class = 'head'><input class='btn btn-info btn-xs' type = 'submit' name = 'submit' value = 'Register'></p></form>");
+print("<a class='btn btn-warning btn-xs' href='index.php?page=login'>Return to Login</a><br>");
 ?>

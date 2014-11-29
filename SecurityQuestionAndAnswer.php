@@ -31,7 +31,7 @@ if ( isset($_POST["submit"]))
 }
 print("<h1>Forgot Password</h1>");
 print("<h2>Enter Security Answer</h2>");
-print( "<form method = 'post' action = 'SecurityQuestionAndAnswer.php' id= 'submission'>");
+print( "<form method = 'post' id= 'submission'>");
 print("<div><label>Question:</label><input type = 'text' name = '' value = '");
 print(htmlspecialchars($SecurityQuestion, ENT_QUOTES));
 print("' disabled></div>");
@@ -44,8 +44,8 @@ if($SecurityAnswerIncorrect)
 {
 	print("<p class = 'error'>The Security Question and Answer Do Not Match: Please Try Again</p>");
 }
-print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Validate'>   </form>");
+print( "<p class = 'head'><input class='btn btn-info btn-xs' type = 'submit' name = 'submit' value = 'Validate'>   </form>");
 print("<form action= 'index.php?page=security'>");
-print("<input type = 'submit' value='Return To Login'></p>");
+print("<input class='btn btn-warning btn-xs' type = 'submit' value='Return To Login'></p>");
 print("</form>");
 ?>

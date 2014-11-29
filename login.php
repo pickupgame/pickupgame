@@ -58,9 +58,9 @@ if($username_password_mismatch)
 	print("<p class = 'error'>The username and passwords do not match in our system</p>");
 }
 
-print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Login'></p></form>");
-print("<a href='index.php?page=forgot'>Forgot Password</a><br>");
-print("<a href='index.php?page=register'>Register</a>");
+print( "<p class = 'head'><input class='btn btn-info'  type = 'submit' name = 'submit' value = 'Login'></p></form>");
+print("<a class='btn btn-warning btn-xs' href='index.php?page=forgot'>Forgot Password</a>");
+print("<a class='btn btn-success btn-xs' href='index.php?page=register'>Register</a>");
 print("</form>");
 echo "</div>";
 ?>
