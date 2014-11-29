@@ -24,6 +24,10 @@
 							kickPlayer($Game_ID, $_SESSION['UserID']);					
 						}
 					}
+					if(isset($_GET['remove']) && !empty($_GET['remove']))
+					{
+						kickPlayer($Game_ID, $v['UserID']);
+					}
 				}
 				else
 				{

@@ -89,7 +89,9 @@ include_once('/db/sql_functions.php');
 				<td><a href='index.php?page=browse&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
 				<?php
 				if(isset($_SESSION['UserID']) && $_SESSION['UserID'] == $hostID)
-					echo '<td><a class="glyphicon glyphicon-remove"></a></td>';
+				{
+					echo "<td><a class='glyphicon glyphicon-remove' href='index.php?page=browse&Game_ID={$Game_ID}&remove={$v['UserID']}'></a></td>";
+				}
 				?>
 				</tr>
 
