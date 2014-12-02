@@ -2,14 +2,23 @@
 <?php
 error_reporting(E_ALL);
 include("/db/sql_functions.php");
-  $GameID;
- 
-  $queres = "SELECT * FROM game WHERE Game_ID=?";
-  $row = query("321",$queres);
-  $lat = $row[0]["Latitude"];
-  $lon = $row[0]["Longitude"];
-  $sport = $row[0]["Sport"];
-  $gname = $row[0]["GameName"];
+  if(isset($_GET['Game_ID']))
+  {
+    $GameID = $_GET['Game_ID'];
+    $queres = "SELECT * FROM game WHERE Game_ID=?";
+    $row = query($GameID,$queres);
+    $lat = $row[0]["Latitude"];
+    $lon = $row[0]["Longitude"];
+    $sport = $row[0]["Sport"];
+    $gname = $row[0]["GameName"];
+  }
+  else
+  {
+    $lat = "";
+    $lon = "";
+    $sport = "";
+    $gname = ""; 
+  }
 
 ?>
 <html>
