@@ -30,6 +30,7 @@ include("/db/sql_functions.php");
 		$rows = query("%",$query);
 		}
 		echo '<table class="table table-striped"> <th>Game Name</th> <th>Sport</th> <th>Start Time</th> <th>Private?</th> <th>View Game</th>';
+
 		if(!empty($rows))
 			{
 			foreach ($rows as $row) {
