@@ -885,7 +885,7 @@ function getUpcomingGames($PlayerID)
 //new function -- Please add
 function getTotalRatingsAsPlayer($UserID)
 {
-    $sql = "SELECT * from hostratinggame where PlayerEvaluated=?";
+    $sql = "SELECT * from playerratinggame where PlayerEvaluated=?";
     $query = query($UserID, $sql);
     if($query)
     {
