@@ -69,7 +69,7 @@ if ( isset($_POST["submit"]))
 	}
 }
 print("<form method = 'post' id= 'submission'>");
-print("<table class=change>");
+print("<table class='change table'>");
 foreach($inputlist as $inputname => $inputalt )
 {
 	print("<tr>");

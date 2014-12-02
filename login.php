@@ -42,8 +42,8 @@ if ( isset($_POST["submit"]))
 
 print("<h1>Login</h1>");
 print("<form method = 'post' id= 'submission'>");
-print("<div><label>Username:</label><input type = 'text' name = 'Username' value = {$Username}></div>");
-print("<div><label>Password:</label><input type = 'password' name = 'Password' value = {$Password}></div>");
+print("<div><table class='table'><tr><td><label>Username:</label></td><td><input type = 'text' name = 'Username' value = {$Username}></td></tr></table></div>");
+print("<div><table class='table'><tr><td><label>Password:</label></td><td><input type = 'password' name = 'Password' value = {$Password}></td></tr></table></div>");
 
 if($formerrors["Usernameerror"])
 {

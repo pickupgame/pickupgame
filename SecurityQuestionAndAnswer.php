@@ -32,10 +32,10 @@ if ( isset($_POST["submit"]))
 print("<h1>Forgot Password</h1>");
 print("<h2>Enter Security Answer</h2>");
 print( "<form method = 'post' id= 'submission'>");
-print("<div><label>Question:</label><input type = 'text' name = '' value = '");
+print("<table class='table'><tr><td><label>Question:</label></td><td><input type = 'text' name = '' value = '");
 print(htmlspecialchars($SecurityQuestion, ENT_QUOTES));
-print("' disabled></div>");
-print("<div><label>Answer:</label><input type = 'text' name = 'SecurityAnswer' value = {$SecurityAnswer}></div>");
+print("'disabled></td></tr></table>");
+print("<table class='table'><tr><td><label>Answer:</label></td><td><input type = 'text' name = 'SecurityAnswer' value = {$SecurityAnswer}></td></tr></table>");
 if($formerrors["SecurityAnswererror"])
 {
 	print("<p class = 'error'>Please enter a Security Answer</p>");

@@ -29,10 +29,11 @@ if ( isset($_POST["submit"]))
 }
 print("<h1>Forgot Password</h1>");
 print( "<form method = 'post' action = 'index.php?page=forgot' id= 'submission'>");
-print("<div><label>Username:</label><input type = 'text' name = 'Username' value = {$Username}></div>");
+print("<table class='table'><tr><td><label>Username:</label></td><td><input type = 'text' name = 'Username' value = {$Username}></td></tr></table>");
+;
 if($formerrors["Usernameerror"])
 {
-	print("<p class = 'error'>Please enter a Username that begins with letter first</p>");
+	print("<p>Please enter a Username that begins with letter first</p>");
 }
 if($username_notexist)
 {
