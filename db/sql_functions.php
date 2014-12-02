@@ -771,7 +771,7 @@ function retrieveSportDetails($SportName)
         foreach ($query as $sportsinfo)
         {
             echo "<tr>";
-            echo "<td>" . $sportsinfo['Name'] . "</td>";
+            echo "<td><a href='index.php?page=browse&Game_ID={$sportsinfo['Game_ID']}'>" . $sportsinfo['Name'] . "</a></td>";
             echo "<td>" . $sportsinfo['Sport'] . "</td>";
             echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
             echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";
