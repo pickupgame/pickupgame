@@ -799,4 +799,78 @@ function retrieveSportDetails($SportName)
        echo "</div>";
 }
 
+
+function getUserInfo($UserID)
+{
+    $db = dbConnect();
+    $sql = "SELECT * FROM userprofile WHERE UserID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    if($query->num_rows > 0)
+    {
+        return $row=$query->fetch_array(MYSQLI_ASSOC);
+    }
+    else
+    {
+        return null;
+    }
+}
+function UpdateUserInfo($UserID, $Name, $Age, $ImageLocation)
+{
+    $db = dbConnect();
+    $sql = "UPDATE  `userprofile` SET Name=?, Age=?, ImageLocation=? WHERE UserID=?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('sisi', $Name, $Age, $ImageLocation, $UserID);
+    $stmt->execute();
+    // echo $db->error;
+    if($stmt->affected_rows > 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+//updated from Josh's page
+function getUpcomingGames($PlayerID)
+{
+    $db = dbConnect();
+    $sql = "SELECT game.Game_ID, game.GameName, game.Sport, game.DateAndTime FROM game INNER JOIN gameplayer ON game.Game_ID = gameplayer.GameID WHERE gameplayer.PlayerID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $PlayerID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $counting = $query->fetch_all(MYSQLI_NUM);
+    $db->close();
+    if($query->num_rows > 0)
+    {
+        echo "<h2>Upcoming Games</h2>";
+        echo "<table class='table table-striped table-condensed'>";
+        foreach($counting as $dope)
+        {
+        echo "<th>Name</th>";
+        echo "<th>Sport</th>";
+        echo "<th>Date and Time</th>";
+        echo "<th></th>";
+        echo "<tr>";
+        echo "<td>{$dope[1]}</td>";
+        echo "<td>{$dope[2]}</td>";
+        echo "<td>{$dope[3]}</td>";
+        echo "</tr>";
+        }
+        echo "</table>";
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+
+
+
+
 ?>
