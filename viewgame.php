@@ -49,7 +49,7 @@ include_once('/db/sql_functions.php');
 				<td><a href='index.php?page=browse&rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
 			</tr>
 		</table>
-		</div>		
+		</div>
 
 		<?php
 		if($gamePlayers)
