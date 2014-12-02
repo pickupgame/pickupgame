@@ -775,6 +775,7 @@ function retrieveSportDetails($SportName)
     echo "<th>Players</th>";
     echo "<th>Pass?</th>";
     echo "<th>Host Rating</th>";
+    echo "<th></th>";
 
     if($query->num_rows > 0)
     {   
@@ -782,7 +783,7 @@ function retrieveSportDetails($SportName)
         foreach ($query as $sportsinfo)
         {
             echo "<tr>";
-            echo "<td><a href='index.php?page=browse&Game_ID={$sportsinfo['Game_ID']}'>" . $sportsinfo['Name'] . "</a></td>";
+            echo "<td>" . $sportsinfo['Name'] . "</td>";
             echo "<td>" . $sportsinfo['Sport'] . "</td>";
             echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
             echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";
@@ -798,6 +799,7 @@ function retrieveSportDetails($SportName)
             }
 
             echo "<td>" . getHostRating($sportsinfo['Host_ID']). "</td>";
+            echo "<td><a class='btn btn-info btn-xs' href='index.php?page=browse&Game_ID={$sportsinfo['Game_ID']}'>View</a></td>";
             echo "</tr>";
         }
     }
