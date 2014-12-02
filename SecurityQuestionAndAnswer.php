@@ -34,8 +34,8 @@ print("<h2>Enter Security Answer</h2>");
 print( "<form method = 'post' id= 'submission'>");
 print("<table class='table'><tr><td><label>Question:</label></td><td><input type = 'text' name = '' value = '");
 print(htmlspecialchars($SecurityQuestion, ENT_QUOTES));
-print("'disabled></td></tr></table>");
-print("<table class='table'><tr><td><label>Answer:</label></td><td><input type = 'text' name = 'SecurityAnswer' value = {$SecurityAnswer}></td></tr></table>");
+print("'disabled></td></tr>");
+print("<tr><td><label>Answer:</label></td><td><input type = 'text' name = 'SecurityAnswer' value = {$SecurityAnswer}></td></tr></table>");
 if($formerrors["SecurityAnswererror"])
 {
 	print("<p class = 'error'>Please enter a Security Answer</p>");
