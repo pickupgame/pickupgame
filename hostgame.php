@@ -45,17 +45,19 @@
 	}
 
 	echo "<h1>Game Details</h1>";
-	echo "<form method = 'post' action='index.php?page=hostgame'> Name: <input class='form-control' type='text' name='GameName' id='GameName'>";
-	echo "<br>Sport: <select class='form-control' name = 'Sport' id = 'Sport'>";
+	echo "<form method = 'post' action='index.php?page=hostgame'>";
+	echo "<table class='table'>";
+	echo "<tr><td><label>Name:</label></td><td><input class='form-control' type='text' name='GameName' id='GameName'></td></tr>";
+	echo "<tr><td><label>Sport:</label></td><td><select class='form-control' name = 'Sport' id = 'Sport'>";
 		foreach($get_sports as $setsports)
 		{
 			print "<option value = '" . $setsports["SportName"] . "'>" . $setsports["SportName"] . "</option>";
 		}
 
-	echo "</select>";
-	echo "<br>Players:<input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'>";
-	echo "<br>Password:<input class='form-control' type = 'password' name = 'Password' id = 'Password'>";
-	echo "<br>Description:<br> <textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea><br>";
+	echo "</select></td></tr>";
+	echo "<tr><td><label>Players:</label></td><td><input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'></td></tr>";
+	echo "<tr><td><label>Password:</label></td><td><input class='form-control' type = 'password' name = 'Password' id = 'Password'></td></tr>";
+	echo "<tr><td><label>Description:</label></td><td><textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea></td></tr></table>";
 	echo "<button class='btn btn-danger pull-right' type = 'button'>Cancel</button>";
 	echo "<input class='btn btn-info pull-right' type='submit' name='submit' value = 'Host Game'></form>";
 	

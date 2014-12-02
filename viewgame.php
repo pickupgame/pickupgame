@@ -37,7 +37,7 @@ include_once('/db/sql_functions.php');
 		</div>
 		<div class="panel panel-info">
 			<div class="panel-heading">Host</div>
-		<table class='table table-striped'>
+		<table class='table table-striped '>
 			<th>Name</th>
 			<th>Rating</th>
 			<th></th>
