@@ -7,8 +7,16 @@
 			include_once('rating.php');
 		}
 		elseif(isset($_GET['page']))
-		{										
-			if ($_GET['page'] == 'browse')
+		{
+			if($_GET['page'] == 'profile')
+			{
+				include_once('profilepage.php');
+				if(isset($_GET['action']) AND $_GET['action'] == 'editprofile')
+				{
+					include_once('editprofile.php');
+				}
+			}									
+			elseif ($_GET['page'] == 'browse')
 			{
 				if (isset($_GET['Game_ID']))
 				{
@@ -60,8 +68,17 @@
 			echo "<span class='text-danger'>You must log in to rate a player.</span>";
 		}
 		if(isset($_GET['page']))
-		{							
-			if ($_GET['page'] == 'browse')
+		{	
+			if($_GET['page'] == 'profile')
+			{
+				include_once('profilepage.php');
+				include_once('login.php');
+				if(isset($_GET['action']) AND $_GET['action'] == 'edit')
+				{
+					include_once('editprofile.php');
+				}
+			}
+			elseif ($_GET['page'] == 'browse')
 			{
 				if (isset($_GET['Game_ID']))
 				{

@@ -838,7 +838,7 @@ function UpdateUserInfo($UserID, $Name, $Age, $ImageLocation)
 function getUpcomingGames($PlayerID)
 {
     $db = dbConnect();
-    $sql = "SELECT game.Game_ID, game.GameName, game.Sport, game.DateAndTime FROM game INNER JOIN gameplayer ON game.Game_ID = gameplayer.GameID WHERE gameplayer.PlayerID = ?";
+    $sql = "SELECT game.Game_ID, game.Name, game.Sport, game.DateAndTime FROM game INNER JOIN gameplayer ON game.Game_ID = gameplayer.GameID WHERE gameplayer.PlayerID = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('i', $PlayerID);
     $stmt->execute();

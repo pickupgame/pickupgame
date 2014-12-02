@@ -62,5 +62,5 @@ print( "<p class = 'head'><input class='btn btn-info'  type = 'submit' name = 's
 print("<a class='btn btn-warning btn-xs' href='index.php?page=forgot'>Forgot Password</a>");
 print("<a class='btn btn-success btn-xs' href='index.php?page=register'>Register</a>");
 print("</form>");
-echo "</div>";
+
 ?>

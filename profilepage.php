@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('db/sql_functions.php');
-$_SESSION['UserID']=3;
 if(isset($_SESSION['UserID']))
 {
 	$userID=$_SESSION['UserID'];
@@ -50,13 +49,13 @@ if(isset($_SESSION['UserID']))
 			print("</tr>");
 		print("</thead>");
 	print("</table>");
-	print("<a href='index.php?page=editprofile'>Edit Profile Information</a><br>");
+	print("<a href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
 	getUpcomingGames($userID);
 }
 else
 {
 	?>
-	<p>You are not logged in! Please click the login button to login and visit your profile</p>
+	<p class='text-danger'>You are not logged in! Please login to visit your profile</p>
 	<?php
 }
 

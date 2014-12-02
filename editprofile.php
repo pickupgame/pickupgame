@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('db/sql_functions.php');
-$_SESSION['UserID']=3;
 if(isset($_SESSION['UserID']))
 {
 	$userID=$_SESSION['UserID'];
@@ -55,12 +54,12 @@ if(isset($_SESSION['UserID']))
 		print ("<p class = 'error'>Please fix the following areas marked by an *");
 	}
 	print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Save Profile Information'></p></form>");
-	print("<a href='index.php?page=profilepage'>Return to Profile Page: Changes will not be submitted</a><br>");
+	print("<a href='index.php?page=profile'>Return to Profile Page: Changes will not be submitted</a><br>");
 }
 else
 {
 	?>
-	<p>You are not logged in! Please click the login button to login to edit your profile</p>
+	<p class='text-danger'>You are not logged in! Please login to edit your profile</p>
 	<?php
 }
 ?>
