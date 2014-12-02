@@ -703,6 +703,112 @@ function displayGames($GameDetails, $type)
     }
     echo "</table>";
 }
+function getPlayersRemaining($Game_ID)
+{
+    $db = dbConnect();
+    //get max players
+    $sql = "SELECT MaxPlayersNum FROM game WHERE Game_ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $Game_ID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $maxplayers = $query->fetch_all(MYSQLI_ASSOC);
+    //get total players in game
+    $sql = "SELECT PlayerID FROM gameplayer WHERE GameID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $Game_ID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $currentlyplaying = $query->num_rows;
+    $db->close();
 
+    return $currentlyplaying . "/" . $maxplayers[0]['MaxPlayersNum'];
+
+}
+
+function generateSportsTabs()
+{
+    $db = dbConnect();
+    $sql = "select SportName from sport";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+
+    if($query->num_rows > 0)
+    {   
+        $result = $query->fetch_all(MYSQLI_ASSOC);
+
+        foreach($result as $v)
+        {
+            echo "<a href = '#{$v['SportName']}'>{$v['SportName']}</a>\n";      // Just have links now. May want to swap for buttons (didn't want to 
+        }                                                                                   // add buttons because of Bootstrap implementation)
+
+        echo "<a href = '#'>+</a>";
+        echo "<div class='items'>";
+        foreach($result as $v)
+        {
+            retrieveSportDetails($v['SportName']);
+        }
+
+        echo "</div>";
+
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+function retrieveSportDetails($SportName)
+{
+    $db = dbConnect();
+    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('s', $SportName);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+
+    echo "<table id = '" . $SportName . "'>";
+    echo "<th>Name</th>";
+    echo "<th>Sport</th>";
+    echo "<th>Date and Time</th>";
+    echo "<th>Players</th>";
+    echo "<th>Pass?</th>";
+    echo "<th>Host Rating</th>";
+
+    if($query->num_rows > 0)
+    {   
+        $query->fetch_all(MYSQLI_ASSOC); //returns a NUM indexed array with an associative inside for all rows.
+        foreach ($query as $sportsinfo)
+        {
+            echo "<tr>";
+            echo "<td>" . $sportsinfo['GameName'] . "</td>";
+            echo "<td>" . $sportsinfo['Sport'] . "</td>";
+            echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
+            echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";
+
+            if($sportsinfo['Private'] != 1)
+            {
+                echo "<td>No</td>";
+            }
+            
+            if($sportsinfo['Private'] === 1)
+            {
+                echo "<td>Yes</td>";
+            }
+
+            echo "<td>" . getHostRating($sportsinfo['Host_ID']). "</td>";
+            echo "</tr>";
+        }
+    }
+    else
+    {
+        return NULL;
+    }
+
+       echo "</table>";
+}
 
 ?>

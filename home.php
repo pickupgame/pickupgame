@@ -2,6 +2,8 @@
 //home page
 include_once('db/sql_functions.php');
 
+generateSportsTabs();
+
 $user = getPlayerDetails($_SESSION['UserID']);
 
 echo "Welcome, {$user['UserName']}!<br>";
