@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <?php
 error_reporting(E_ALL);
 include("/db/sql_functions.php");
   $GameID;
  
-  $queres = "SELECT * FROM game WHERE Game_ID=?";
-  $row = query("321",$queres);
+  $query = "SELECT * FROM game WHERE Game_ID=?";
+  $row = query($_GET['Game_ID'],$query);
   $lat = $row[0]["Latitude"];
   $lon = $row[0]["Longitude"];
   $sport = $row[0]["Sport"];
@@ -42,7 +41,7 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var image = 'images/flag.png';
+  var image = 'images/' + jsport + '.png';
   var myLatLng = new google.maps.LatLng(jlat, jlon);
   var gameMarker = new google.maps.Marker({
       position: myLatLng,
