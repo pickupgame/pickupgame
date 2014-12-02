@@ -53,7 +53,7 @@ if(isset($_SESSION['UserID']))
 	{
 		print ("<p class = 'error'>Please fix the following areas marked by an *");
 	}
-	print( "<p class = 'head'><input type = 'submit' name = 'submit' value = 'Save Profile Information'></p></form>");
+	print( "<p class = 'head'><input class='btn btn-info btn-xs' type = 'submit' name = 'submit' value = 'Save Profile Information'></p></form>");
 	print("<a href='index.php?page=profile'>Return to Profile Page: Changes will not be submitted</a><br>");
 }
 else

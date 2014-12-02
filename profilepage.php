@@ -49,7 +49,7 @@ if(isset($_SESSION['UserID']))
 			print("</tr>");
 		print("</thead>");
 	print("</table>");
-	print("<a href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
+	print("<a class='btn btn-info btn-xs' href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
 	// getUpcomingGames($userID);
 }
 else
