@@ -759,5 +759,4 @@ function retrieveSportDetails($SportName)
        echo "</table>";
 }
 
-
 ?>
