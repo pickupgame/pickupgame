@@ -2,7 +2,7 @@
 	<li class="active"><a href="index.php?page=home">Home</a></li>
 	<?php 
 		$status = "login";
-		$profile = "Profile";
+		$profile = "profile";
 		if(isset($_SESSION['UserID']))
 		{
 			$status = "logout";
@@ -11,7 +11,7 @@
 		if($status == "login")
 		{
 			echo "<li><a href='index.php?page={$status}'>{$status}</a></li>";
-			echo "<li><a href='index.php?page={$profile}'>{$profile}</a></li>";
+			echo "<li><a href='index.php?page={$profile}'>Profile</a></li>";
 		}
 		else
 		{

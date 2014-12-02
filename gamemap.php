@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 error_reporting(E_ALL);
-include("/db/sql_functions.php");
+include_once("/db/sql_functions.php");
   if(isset($_GET['Game_ID']))
   {
     $GameID = $_GET['Game_ID'];
