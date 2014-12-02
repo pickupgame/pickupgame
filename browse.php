@@ -38,7 +38,8 @@ include("/db/sql_functions.php");
 		       echo "<td>".$row["Sport"]."</td>";
 		       echo "<td>".$row["DateAndTime"]."</td>";
 		       echo "<td>".$row["Private"]."</td>";
-		       echo "<td>".$row["Game_ID"]."</td>";
+		       echo "<td> <a href=\"index.php?page=browse&Game_ID=".$row["Game_ID"]."\">View</a></td>";
+		       //index.php?page=browse&Game_ID=".$row["Game_ID"]."
 		       echo "</tr>";
 		   		}
 			}
