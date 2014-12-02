@@ -710,10 +710,11 @@ function generateSportsTabs()
 
 function retrieveSportDetails($SportName)
 {
+    $today = date("Y-m-d H:i:s"); // Grabs today's current date in DateTime format
     $db = dbConnect();
-    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ? AND ? < DateAndTime";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param('s', $SportName);
+    $stmt->bind_param('ss', $SportName, $today);
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
