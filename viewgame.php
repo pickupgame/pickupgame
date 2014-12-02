@@ -45,8 +45,8 @@ include_once('/db/sql_functions.php');
 			<tr>
 				<td><?="{$hostData['Name']}";?></td>
 				<td><?="{$hostRating}";?></td>
-				<td><a href='index.php?page=browse&rating=positive&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
-				<td><a href='index.php?page=browse&rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
+				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=positive&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
+				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
 			</tr>
 		</table>
 		</div>
@@ -81,8 +81,8 @@ include_once('/db/sql_functions.php');
 				<tr>
 				<td><?="{$v['Name']}"?></td>
 				<td><?php echo getPlayerRating($v['UserID']);?></td>
-				<td><a href='index.php?page=browse&rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
-				<td><a href='index.php?page=browse&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
+				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
+				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
 				<?php
 				if(isset($_SESSION['UserID']) && $_SESSION['UserID'] == $hostID)
 				{
@@ -110,6 +110,10 @@ include_once('/db/sql_functions.php');
 			{
 				echo "<p class='text-success'>You are the host of this game.</p>";
 			}
+		}
+		else
+		{
+			echo "<p class='text-danger'>Please login if you would like to join a game.</p>";
 		}
 		
 	}

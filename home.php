@@ -27,7 +27,7 @@ if($hostGames)
 }
 else
 {
-	echo "You are not a host. You have no hosted games. <br>";	
+	echo "You are not a host. You have no hosted games.";	
 }
 echo "<div class='pull-left'><a class='btn btn-info btn-xs' href='index.php?page=hostgame'>Host a Game</a></div>";
 echo "</div>";
@@ -44,7 +44,7 @@ if($playerGames)
 }
 else
 {
-	echo "<br><br><p>You have not joined any games.</p>";	
+	echo "<p>You have not joined any games.</p>";	
 	echo "<a class='btn btn-info btn-xs' href='index.php?page=browse'>Browse Games</a>";
 }
 echo "</div>";
