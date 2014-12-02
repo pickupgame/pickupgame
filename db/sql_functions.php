@@ -763,7 +763,7 @@ function generateSportsTabs()
 function retrieveSportDetails($SportName)
 {
     $db = dbConnect();
-    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $SportName);
     $stmt->execute();
@@ -784,7 +784,7 @@ function retrieveSportDetails($SportName)
         foreach ($query as $sportsinfo)
         {
             echo "<tr>";
-            echo "<td>" . $sportsinfo['GameName'] . "</td>";
+            echo "<td>" . $sportsinfo['Name'] . "</td>";
             echo "<td>" . $sportsinfo['Sport'] . "</td>";
             echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
             echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";
