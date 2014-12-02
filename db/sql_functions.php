@@ -1,6 +1,6 @@
 <?php
 include_once("globals.php");
-
+$tabPaneCount = 0;
 function dbConnect()
 {
     $db = new mysqli($GLOBALS['host'], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']) or die('Unable to connect.');
@@ -744,6 +744,7 @@ function generateSportsTabs()
 
 function retrieveSportDetails($SportName)
 {
+    global $tabPaneCount;
     $db = dbConnect();
     $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
     $stmt = $db->prepare($sql);
@@ -751,7 +752,11 @@ function retrieveSportDetails($SportName)
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
-    echo "<div role='tabpanel' class='tab-pane' id='{$SportName}'>";
+    if($tabPaneCount == 0)
+        echo "<div role='tabpanel' class='tab-pane active' id='{$SportName}'>";
+    else
+        echo "<div role='tabpanel' class='tab-pane' id='{$SportName}'>";
+    $tabPaneCount++;
     echo "<table class='table table-striped'>";
     echo "<th>Name</th>";
     echo "<th>Sport</th>";
