@@ -869,8 +869,20 @@ function getUpcomingGames($PlayerID)
     }
 }
 
-
-
-
+//new function -- Please add
+function getTotalRatingsAsPlayer($UserID)
+{
+    $sql = "SELECT * from hostratinggame where PlayerEvaluated=?";
+    $query = query($UserID, $sql);
+    if($query)
+    {
+        return count($query);    
+    }
+    else
+    {
+        return NULL;
+    }
+    
+}
 
 ?>
