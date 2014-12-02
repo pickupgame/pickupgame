@@ -14,6 +14,11 @@ session_start();
 
 <script src="javascript/jquery-1.11.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+
+
+
+</script>
 
 </head>
 <body>

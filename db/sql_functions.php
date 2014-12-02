@@ -709,24 +709,30 @@ function generateSportsTabs()
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
-
+    $tabCount = 0;
     if($query->num_rows > 0)
     {   
         $result = $query->fetch_all(MYSQLI_ASSOC);
-
+        echo "<div role='tabpanel' id='mytab'>";
+        echo '<ul class="nav nav-tabs" role="tablist">';
         foreach($result as $v)
         {
-            echo "<a href = '#{$v['SportName']}'>{$v['SportName']}</a>\n";      // Just have links now. May want to swap for buttons (didn't want to 
-            echo "<a href = '#" . $v['SportName'] . "'>" . $v['SportName'] . "</a>\n";      // Just have links now. May want to swap for buttons (didn't want to 
-        }                                                                                   // add buttons because of Bootstrap implementation)
+            if($tabCount == 0)
+                echo "<li role='presentation' class='active'><a href = '#{$v['SportName']}' role='tab' data-toggle='tab' aria-controls='{$v['SportName']}'>{$v['SportName']}</a></li>";       // Just have links now. May want to swap for buttons (didn't want to 
+            else                                                                                                                                                               // add buttons because of Bootstrap implementation)  
+                echo "<li role='presentation'><a href = '#{$v['SportName']}' role='tab' data-toggle='tab' aria-controls='{$v['SportName']}'>{$v['SportName']}</a></li>";
 
-        echo "<a href = '#'>+</a>";
-        echo "<div class='items'>";
+            $tabCount++;
+        }
+        echo '</ul>';
+
+        echo "<div class='tab-content'>";
         foreach($result as $v)
         {
             retrieveSportDetails($v['SportName']);
         }
 
+        echo "</div>";
         echo "</div>";
 
     }
@@ -739,14 +745,14 @@ function generateSportsTabs()
 function retrieveSportDetails($SportName)
 {
     $db = dbConnect();
-    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $SportName);
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
-
-    echo "<table id = '" . $SportName . "'>";
+    echo "<div role='tabpanel' class='tab-pane' id='{$SportName}'>";
+    echo "<table class='table table-striped'>";
     echo "<th>Name</th>";
     echo "<th>Sport</th>";
     echo "<th>Date and Time</th>";
@@ -760,7 +766,7 @@ function retrieveSportDetails($SportName)
         foreach ($query as $sportsinfo)
         {
             echo "<tr>";
-            echo "<td>" . $sportsinfo['GameName'] . "</td>";
+            echo "<td>" . $sportsinfo['Name'] . "</td>";
             echo "<td>" . $sportsinfo['Sport'] . "</td>";
             echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
             echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";
@@ -785,6 +791,7 @@ function retrieveSportDetails($SportName)
     }
 
        echo "</table>";
+       echo "</div>";
 }
 
 ?>

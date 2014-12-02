@@ -31,9 +31,6 @@ else
 	echo "<br><br><p>You have not joined any games.</p>";	
 	echo "<a class='btn btn-info btn-xs' href='index.php?page=browse'>Browse Games</a>";
 }
-
-
-generateSportsTabs();
 ?>
 
 
