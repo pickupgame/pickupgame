@@ -540,28 +540,6 @@ function getGameDetails($GameID)
 //         $db->close();
 // }
 
-function HostGame($Name, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude)
-{
-    $db = dbConnect();
-    $sql = "INSERT INTO `game` (Name, Sport, MaxPlayersNum, DateAndTime, Password, Private, Host_ID, Description, Latitude, Longitude)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param('ssissiisdd', $Name, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
-    $stmt->execute();
-
-    // echo $db->error;
-
-    if($stmt->affected_rows > 0)
-    {
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
-
-}
-
 
 function DetermineNextUserID()
 {
@@ -601,8 +579,6 @@ function userInGame($PlayerID, $GameID)
     {
         return FALSE;
     }   
-
-
 }
 
 function JoinGame($GameID, $PlayerID)
@@ -638,7 +614,6 @@ function JoinGame($GameID, $PlayerID)
     {
         return FALSE;
     }
- 
 }
 
 function checkGamePassword($GameID, $Password)
@@ -742,6 +717,7 @@ function generateSportsTabs()
         foreach($result as $v)
         {
             echo "<a href = '#{$v['SportName']}'>{$v['SportName']}</a>\n";      // Just have links now. May want to swap for buttons (didn't want to 
+            echo "<a href = '#" . $v['SportName'] . "'>" . $v['SportName'] . "</a>\n";      // Just have links now. May want to swap for buttons (didn't want to 
         }                                                                                   // add buttons because of Bootstrap implementation)
 
         echo "<a href = '#'>+</a>";
@@ -763,7 +739,7 @@ function generateSportsTabs()
 function retrieveSportDetails($SportName)
 {
     $db = dbConnect();
-    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $sql = "SELECT Game_ID, GameName, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $SportName);
     $stmt->execute();
@@ -784,7 +760,7 @@ function retrieveSportDetails($SportName)
         foreach ($query as $sportsinfo)
         {
             echo "<tr>";
-            echo "<td>" . $sportsinfo['Name'] . "</td>";
+            echo "<td>" . $sportsinfo['GameName'] . "</td>";
             echo "<td>" . $sportsinfo['Sport'] . "</td>";
             echo "<td>" . $sportsinfo['DateAndTime'] . "</td>";
             echo "<td>" . getPlayersRemaining($sportsinfo['Game_ID']) . "</td>";

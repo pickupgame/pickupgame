@@ -32,4 +32,8 @@ else
 	echo "<a class='btn btn-info btn-xs' href='index.php?page=browse'>Browse Games</a>";
 }
 
+
+generateSportsTabs();
 ?>
+
+
