@@ -1,3 +1,9 @@
+<form  method="post">
+	<label for='formSport'>Select a sport</label><br>
+	<select name="formSport"><option value="Select">All Games</option><option value="vb">Volleyball</option><option value="fb">Football</option><option value="sc">Soccer</option> </select>
+	<input type="submit" name="formSubmit" value="Submit" >
+</form>
+
 <?php
 include("/db/sql_functions.php");
 	if(isset($_POST['formSubmit'])) 
@@ -41,8 +47,3 @@ include("/db/sql_functions.php");
 	}
 ?>
 
-<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-	<label for='formSport'>Select a sport</label><br>
-	<select name="formSport"><option value="Select">All Games</option><option value="vb">Volleyball</option><option value="fb">Football</option><option value="sc">Soccer</option> </select>
-	<input type="submit" name="formSubmit" value="Submit" >
-</form>
