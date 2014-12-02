@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 if(isset($_SESSION['UserID']))
 {
 	$userID=$_SESSION['UserID'];
@@ -10,7 +10,7 @@ if(isset($_SESSION['UserID']))
 	$username=$result["UserName"];
 	$imageLocation=$result["ImageLocation"];
 	?>
-	<table>
+	<table class='table table-striped'>
 		<thead>
 			<tr>
 				<th rowspan = "5">
@@ -50,7 +50,7 @@ if(isset($_SESSION['UserID']))
 		print("</thead>");
 	print("</table>");
 	print("<a href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
-	getUpcomingGames($userID);
+	// getUpcomingGames($userID);
 }
 else
 {

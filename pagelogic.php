@@ -73,9 +73,9 @@
 			{
 				include_once('profilepage.php');
 				include_once('login.php');
-				if(isset($_GET['action']) AND $_GET['action'] == 'edit')
+				if(isset($_GET['action']) AND $_GET['action'] == 'editprofile')
 				{
-					include_once('editprofile.php');
+					// include_once('editprofile.php');
 				}
 			}
 			elseif ($_GET['page'] == 'browse')

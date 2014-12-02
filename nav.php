@@ -16,7 +16,7 @@
 		else
 		{
 			echo "<li><a href='{$status}.php'>{$status}</a></li>";
-			echo "<li><a href='index.php?page=profile&action=edit'>Edit Profile</a></li>";
+			echo "<li><a href='index.php?page=profile'>Profile</a></li>";
 			echo "<li><a href='index.php?page=hostgame'>Host a Game</a></li>";
 		}
 	?>

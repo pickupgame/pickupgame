@@ -195,6 +195,7 @@ function getHost($GameID)
     $stmt->bind_param('i', $GameID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $result = $query->fetch_array(MYSQLI_ASSOC);
@@ -215,6 +216,7 @@ function getHostGames($UserID)
     $stmt->bind_param('i', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $result = $query->fetch_all(MYSQLI_ASSOC);
@@ -234,6 +236,7 @@ function getPlayerGames($UserID)
     $stmt->bind_param('i', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $result = $query->fetch_all(MYSQLI_ASSOC);        
@@ -262,6 +265,7 @@ function getPassword($UserName)
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -284,6 +288,7 @@ function getUserID($UserName)
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -306,6 +311,7 @@ function getUserName($UserID)
     $stmt->bind_param('s', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -328,6 +334,7 @@ function getSecurityQuestion($UserID)
     $stmt->bind_param('s', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -350,6 +357,7 @@ function getSecurityAnswer($UserID)
     $stmt->bind_param('s', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -376,6 +384,7 @@ function InsertNewUser($Name, $Age, $UserName, $Password, $SecurityQuestion, $Se
         $stmt->bind_param('sisssss', $Name, $Age, $UserName, $Password, $SecurityQuestion, $SecurityAnswer, $ImageLocation);
         $stmt->execute();
         // echo $db->error;
+        $db->close();
         if($stmt->affected_rows > 0)
         {
             return TRUE;
@@ -387,6 +396,7 @@ function InsertNewUser($Name, $Age, $UserName, $Password, $SecurityQuestion, $Se
     }
     else
     {
+        $db->close();
         return FALSE;
     }
 }
@@ -400,6 +410,7 @@ function CheckifUserNameExist($UserName)
     $stmt->bind_param('s', $UserName);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         return TRUE;
@@ -808,6 +819,7 @@ function getUserInfo($UserID)
     $stmt->bind_param('i', $UserID);
     $stmt->execute();
     $query = $stmt->get_result();
+    $db->close();
     if($query->num_rows > 0)
     {
         return $row=$query->fetch_array(MYSQLI_ASSOC);
@@ -825,6 +837,7 @@ function UpdateUserInfo($UserID, $Name, $Age, $ImageLocation)
     $stmt->bind_param('sisi', $Name, $Age, $ImageLocation, $UserID);
     $stmt->execute();
     // echo $db->error;
+    $db->close();
     if($stmt->affected_rows > 0)
     {
         return TRUE;

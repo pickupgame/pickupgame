@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db/sql_functions.php');
+include_once('db/sql_functions.php');
 if(isset($_SESSION['UserID']))
 {
 	$userID=$_SESSION['UserID'];
@@ -28,12 +28,12 @@ if(isset($_SESSION['UserID']))
 			UpdateUserInfo($userID, $name, $age, $imagelocation);
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY CHANGED YOUR PROFILE INFORMATION</span></p>");	
 			print("<p>Please select the following link to ");	
-			print("<a href='index.php?page=profilepage'>Return to Profile Page</a></p>");
-			die();
+			print("<a href='index.php?page=profile'>Return to Profile Page</a></p>");
+			// die();
 		}
 	}
-	print( "<form method = 'post' action = 'editprofile.php' id= 'submission'>");
-	print("<table class=change>");
+	print( "<form method = 'post' id= 'submission'>");
+	print("<table class='change table table-striped'>");
 	foreach($inputlist as $inputname => $inputalt )
 	{
 		print("<tr>");
