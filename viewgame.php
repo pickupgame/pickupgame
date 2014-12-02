@@ -97,10 +97,12 @@ include_once('/db/sql_functions.php');
 			echo "</div>";
 
 		}
-		if($_SESSION['UserID'] != $hostID)
+		if(isset($_SESSION['UserID']) AND $_SESSION['UserID'] != $hostID)
 		{
-			echo "<a class='btn btn-danger pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=leave'>Leave Game</a>";
-			echo "<a class='btn btn-info pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=join'>Join Game</a>";
+			if(userInGame($_SESSION['UserID'], $Game_ID))
+				echo "<a class='btn btn-danger pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=leave'>Leave Game</a>";
+			if(!userInGame($_SESSION['UserID'], $Game_ID))
+				echo "<a class='btn btn-info pull-right'href='index.php?page=browse&Game_ID={$Game_ID}&action=join'>Join Game</a>";
 		}
 		
 	}

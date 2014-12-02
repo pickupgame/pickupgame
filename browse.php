@@ -5,7 +5,7 @@
 </form>
 
 <?php
-include("/db/sql_functions.php");
+include_once("/db/sql_functions.php");
 	if(isset($_POST['formSubmit'])) 
 	{
 		$varSport = $_POST['formSport'];
