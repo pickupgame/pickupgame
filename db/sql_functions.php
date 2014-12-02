@@ -672,7 +672,7 @@ function kickPlayer($GameID, $PlayerID)
 
 function displayGames($GameDetails, $type)
 {
-    echo "<table class='table table-striped table-condensed'>";
+    echo "<table class='table table-condensed'>";
     foreach($GameDetails as $index=>$game)
     {
         echo "<th>Name</th>";
@@ -683,7 +683,7 @@ function displayGames($GameDetails, $type)
         echo "<td>{$game['Name']}</td>";
         echo "<td>{$game['Sport']}</td>";
         echo "<td>{$game['DateAndTime']}</td>";
-        echo "<td><a class='btn btn-info btn-xs' href='index.php?page=browse&Game_ID={$game['Game_ID']}'>View Details</a></td>";
+        echo "<td><a class='btn btn-info btn-xs' href='index.php?page=browse&Game_ID={$game['Game_ID']}'>View</a></td>";
         echo "</tr>";
         
     }
