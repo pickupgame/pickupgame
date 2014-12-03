@@ -13,10 +13,10 @@
 			echo "<li><a href='index.php?page={$status}'>{$status}</a></li>";
 			echo "<li><a href='index.php?page={$profile}'>Profile</a></li>";
 		}
-		else
+		elseif($status == 'logout')
 		{
 			echo "<li><a href='{$status}.php'>{$status}</a></li>";
-			echo "<li><a href='index.php?page=profile'>Profile</a></li>";
+			echo "<li><a href='index.php?page=profile&UserID={$_SESSION['UserID']}'>Profile</a></li>";
 			echo "<li><a href='index.php?page=hostgame'>Host a Game</a></li>";
 		}
 	?>

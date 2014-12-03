@@ -402,6 +402,25 @@ function InsertNewUser($Name, $Age, $UserName, $Password, $SecurityQuestion, $Se
 }
 
 
+function checkifUserExists($UserID)
+{
+    $db = dbConnect();
+    $sql = "SELECT * from userprofile where UserID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('s', $UserID);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+    if($query->num_rows > 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }    
+}
+
 function CheckifUserNameExist($UserName)
 {
     $db = dbConnect();

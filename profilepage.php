@@ -1,9 +1,9 @@
 <?php
 session_start();
 include_once('db/sql_functions.php');
-if(isset($_SESSION['UserID']))
+if(isset($_GET['UserID']) && checkifUserExists($_GET['UserID']))
 {
-	$userID=$_SESSION['UserID'];
+	$userID=$_GET['UserID'];
 	$result=getUserInfo($userID);
 	$name=$result["Name"];
 	$age=$result["Age"];
@@ -49,13 +49,14 @@ if(isset($_SESSION['UserID']))
 			print("</tr>");
 		print("</thead>");
 	print("</table>");
-	print("<a class='btn btn-info btn-xs' href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
+	if(isset($_SESSION['UserID']) AND $_SESSION['UserID'] == $userID)
+		print("<a class='btn btn-info btn-xs' href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
 	// getUpcomingGames($userID);
 }
 else
 {
 	?>
-	<p class='text-danger'>You are not logged in! Please login to visit your profile</p>
+	<p class='text-danger'>User does not exist.</p>
 	<?php
 }
 

@@ -1,7 +1,7 @@
 <form  method="post">
 	<label for='formSport'>Select a sport</label><br>
 	<select name="formSport"><option value="Select">All Games</option><option value="vb">Volleyball</option><option value="fb">Football</option><option value="sc">Soccer</option> </select>
-	<input type="submit" name="formSubmit" value="Submit" >
+	<input class='btn btn-info btn-xs' type="submit" name="formSubmit" value="Submit" >
 </form>
 
 <?php
