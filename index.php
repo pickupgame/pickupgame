@@ -31,25 +31,6 @@ $(function(){
 		{
 			echo "$('#jumbotron-map').hide();";
 			echo "$('#map-low').show();";
-
-
-			if($_GET['page'] == 'browse')
-			{
-				
-				echo "$('#dynamic_right').toggle();";
-				echo "$('#dynamic_left').css('width', '940px');";
-			}
-			if($_GET['page'] == 'browse')
-			{
-				//display search results with " " as parameter
-				// echo "$('#dynamic_left').load('browse.php');";
-				if(isset($_GET['Game_ID']))
-				{
-					//browsing a game
-					//only js we need is to hide the divs that arent necessary
-					// echo "$('#dynamic_left').load('gameplayers.php', { Game_ID : '{$_GET['Game_ID']}' });";
-				}
-			}	
 		}
 		else
 		{
