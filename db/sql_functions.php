@@ -757,7 +757,7 @@ function getPlayersRemaining($Game_ID)
 function generateSportsTabs()
 {
     $db = dbConnect();
-    $sql = "select SportName from sport";
+    $sql = "SELECT SportName FROM sport";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $query = $stmt->get_result();
@@ -811,11 +811,9 @@ function retrieveSportDetails($SportName)
     else
         echo "<div role='tabpanel' class='tab-pane' id='{$SportName}'>";
     $tabPaneCount++;
-    
-
+    echo "<table class='table table-striped'>";
     if($query->num_rows > 0)
     {   
-        echo "<table class='table table-striped'>";
         echo "<th>Name</th>";
         echo "<th>Sport</th>";
         echo "<th>Date and Time</th>";
@@ -849,7 +847,13 @@ function retrieveSportDetails($SportName)
     }
     else
     {
-        return NULL;
+        echo "<th>Name</th>";
+        echo "<th>Sport</th>";
+        echo "<th>Date and Time</th>";
+        echo "<th>Players</th>";
+        echo "<th>Pass?</th>";
+        echo "<th>Host Rating</th>";
+        echo "<th></th>";
     }
 
        echo "</table>";
