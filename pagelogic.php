@@ -10,10 +10,14 @@
 		{
 			if($_GET['page'] == 'profile')
 			{
-				include_once('profilepage.php');
+				
 				if(isset($_GET['action']) AND $_GET['action'] == 'editprofile')
 				{
 					include_once('editprofile.php');
+				}
+				else
+				{
+					include_once('profilepage.php');
 				}
 			}									
 			elseif ($_GET['page'] == 'browse')
