@@ -41,11 +41,11 @@ if(isset($_GET['UserID']) && checkifUserExists($_GET['UserID']))
 				$TotalHostRates=getLikes($userID);
 				$PlayerRating=getPlayerRating($userID);
 				$TotalPlayerRates=getTotalRatingsAsPlayer($userID);
-				print("<th>{$HostRating}/{$TotalHostRates} ({$TotalHostRates} votes)</th>");
+				print("<th>{$HostRating}/{$TotalHostRates} ({$TotalHostRates} vote(s))</th>");
 			print("</tr>");
 			print("<tr>");
 				print("<th>Player Rating</th>");
-				print("<th>{$PlayerRating}/{$TotalPlayerRates} ({$TotalPlayerRates} votes)</th>");
+				print("<th>{$PlayerRating}/{$TotalPlayerRates} ({$TotalPlayerRates} vote(s))</th>");
 			print("</tr>");
 		print("</thead>");
 	print("</table>");
