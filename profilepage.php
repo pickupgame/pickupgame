@@ -55,9 +55,14 @@ if(isset($_GET['UserID']) && checkifUserExists($_GET['UserID']))
 }
 else
 {
-	?>
-	<p class='text-danger'>User does not exist.</p>
-	<?php
+	if(isset($_SESSION['UserID']))
+	{
+		echo "<p class='text-danger'>User does not exist.</p>";
+	}
+	else
+	{
+		
+	}
 }
 
 

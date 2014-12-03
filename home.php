@@ -9,7 +9,7 @@ if(isset($_SESSION['UserID']))
 {
 	$user = getPlayerDetails($_SESSION['UserID']);
 	echo "<br><br>";
-	echo "Welcome, {$user['UserName']}!<br>";
+	echo "<h2>Welcome, {$user['UserName']}!</h2>";
 	$hostGames = getHostGames($user['UserID']);
 	$playerGames = getPlayerGames($user['UserID']);
 

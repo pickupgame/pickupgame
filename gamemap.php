@@ -10,7 +10,7 @@ include_once("/db/sql_functions.php");
     $lat = $row[0]["Latitude"];
     $lon = $row[0]["Longitude"];
     $sport = $row[0]["Sport"];
-    $gname = $row[0]["GameName"];
+    $gname = $row[0]["Name"];
   }
   else
   {
