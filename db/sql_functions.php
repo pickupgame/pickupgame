@@ -800,9 +800,9 @@ function retrieveSportDetails($SportName)
     global $tabPaneCount;
     $today = date("Y-m-d H:i:s"); // Grabs today's current date in DateTime format
     $db = dbConnect();
-    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ? AND ? < DateAndTime";
+    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param('ss', $SportName, $today);
+    $stmt->bind_param('s', $SportName);
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
@@ -811,17 +811,18 @@ function retrieveSportDetails($SportName)
     else
         echo "<div role='tabpanel' class='tab-pane' id='{$SportName}'>";
     $tabPaneCount++;
-    echo "<table class='table table-striped'>";
-    echo "<th>Name</th>";
-    echo "<th>Sport</th>";
-    echo "<th>Date and Time</th>";
-    echo "<th>Players</th>";
-    echo "<th>Pass?</th>";
-    echo "<th>Host Rating</th>";
-    echo "<th></th>";
+    
 
     if($query->num_rows > 0)
     {   
+        echo "<table class='table table-striped'>";
+        echo "<th>Name</th>";
+        echo "<th>Sport</th>";
+        echo "<th>Date and Time</th>";
+        echo "<th>Players</th>";
+        echo "<th>Pass?</th>";
+        echo "<th>Host Rating</th>";
+        echo "<th></th>";
         $query->fetch_all(MYSQLI_ASSOC); //returns a NUM indexed array with an associative inside for all rows.
         foreach ($query as $sportsinfo)
         {
