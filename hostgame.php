@@ -66,7 +66,7 @@
 			<fieldset class="gllpLatlonPicker">
 				<div class="gllpMap">Google Maps</div>
 				<label>Latitude:</label><input type="text" class="gllpLatitude" value="42.318449" name='latitude'/>
-				<label>Longitude:</label><input type="text" class="gllpLongitude" value="-83.233202"name='longitude'/>
+				<label>Longitude:</label><input type="text" class="gllpLongitude" value="-83.233202" name='longitude'/>
 				<input type="hidden" class="gllpZoom" value="15"/>
 				<input type="button" class="gllpUpdateButton btn btn-warning btn-xs" value="update map">
 			</fieldset>
