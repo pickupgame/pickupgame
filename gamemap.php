@@ -52,7 +52,7 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var image = 'images/flag.png';
+  var image = 'images/'+ jsport +'.png';
   var myLatLng = new google.maps.LatLng(jlat, jlon);
   var gameMarker = new google.maps.Marker({
       position: myLatLng,
