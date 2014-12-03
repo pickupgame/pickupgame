@@ -43,7 +43,7 @@ include_once('/db/sql_functions.php');
 			<th></th>
 			<th></th>			
 			<tr>
-				<td><?="{$hostData['Name']}";?></td>
+				<td><a href="index.php?page=profile&UserID=<?="{$hostData['UserID']}"?>"><?="{$hostData['Name']}";?></a></td>
 				<td><?="{$hostRating}";?></td>
 				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=positive&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
 				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=negative&HostID=<?="{$hostID}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>								
@@ -79,7 +79,7 @@ include_once('/db/sql_functions.php');
 			{
 				?>
 				<tr>
-				<td><?="{$v['Name']}"?></td>
+				<td><a href="index.php?page=profile&UserID=<?="{$v['UserID']}"?>"><?="{$v['Name']}"?></a></td>
 				<td><?php echo getPlayerRating($v['UserID']);?></td>
 				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=positive&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a></td>
 				<td><a href='index.php?page=browse&Game_ID=<?="$Game_ID"?>&rating=negative&UserID=<?="{$v['UserID']}"?>'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a></td>
