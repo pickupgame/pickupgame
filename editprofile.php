@@ -28,7 +28,7 @@ if(isset($_SESSION['UserID']))
 			UpdateUserInfo($userID, $name, $age, $imagelocation);
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY CHANGED YOUR PROFILE INFORMATION</span></p>");	
 			print("<p>Please select the following link to ");	
-			print("<a href='index.php?page=profile'>Return to Profile Page</a></p>");
+			print("<a href='index.php?page=profile&UserID=$userID'>Return to Profile Page</a></p>");
 			// die();
 		}
 	}
@@ -54,7 +54,7 @@ if(isset($_SESSION['UserID']))
 		print ("<p class = 'error'>Please fix the following areas marked by an *");
 	}
 	print( "<p class = 'head'><input class='btn btn-info btn-xs' type = 'submit' name = 'submit' value = 'Save Profile Information'></p></form>");
-	print("<a href='index.php?page=profile'>Return to Profile Page: Changes will not be submitted</a><br>");
+	print("<a href='index.php?page=profile&UserID=$userID'>Return to Profile Page: Changes will not be submitted</a><br>");
 }
 else
 {

@@ -50,7 +50,7 @@ if(isset($_GET['UserID']) && checkifUserExists($_GET['UserID']))
 		print("</thead>");
 	print("</table>");
 	if(isset($_SESSION['UserID']) AND $_SESSION['UserID'] == $userID)
-		print("<a class='btn btn-info btn-xs' href='index.php?page=profile&action=editprofile'>Edit Profile Information</a><br>");
+		print("<a class='btn btn-info btn-xs' href='index.php?page=profile&UserID=$userID&action=editprofile'>Edit Profile Information</a><br>");
 	// getUpcomingGames($userID);
 }
 else

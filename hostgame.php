@@ -58,8 +58,7 @@
 	echo "<tr><td><label>Players:</label></td><td><input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'></td></tr>";
 	echo "<tr><td><label>Password:</label></td><td><input class='form-control' type = 'password' name = 'Password' id = 'Password'></td></tr>";
 	echo "<tr><td><label>Description:</label></td><td><textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea></td></tr></table>";
-	echo "<button class='btn btn-danger pull-right' type = 'button'>Cancel</button>";
-	echo "<input class='btn btn-info pull-right' type='submit' name='submit' value = 'Host Game'></form>";
+	echo "<input class='btn btn-info pull-right' type='submit' name='submit' value = 'Submit Game'></form>";
 	
 
 
