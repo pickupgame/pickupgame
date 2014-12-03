@@ -42,7 +42,6 @@
 			HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
 			print "<p class='text-success'>You are now the host of a game.</p>";			
 		}
-
 	}
 
 	echo "<h1>Game Details</h1>";
