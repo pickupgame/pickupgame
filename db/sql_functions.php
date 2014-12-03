@@ -574,6 +574,8 @@ function HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $P
     $db = dbConnect();
     $sql = "INSERT INTO `game` (Name, Sport, MaxPlayersNum, DateAndTime, Password, Private, Host_ID, Description, Latitude, Longitude)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $DateAndTime = strtotime($DateAndTime);
+    $DateAndTime = date("Y-m-d H:i:s", $DateAndTime);
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ssissiisdd', $GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
     $stmt->execute();
@@ -796,10 +798,11 @@ function generateSportsTabs()
 function retrieveSportDetails($SportName)
 {
     global $tabPaneCount;
+    $today = date("Y-m-d H:i:s"); // Grabs today's current date in DateTime format
     $db = dbConnect();
-    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ?";
+    $sql = "SELECT Game_ID, Name, Sport, DateAndTime, Private, Host_ID FROM game WHERE Sport = ? AND ? < DateAndTime";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param('s', $SportName);
+    $stmt->bind_param('ss', $SportName, $today);
     $stmt->execute();
     $query = $stmt->get_result();
     $db->close();
@@ -851,7 +854,6 @@ function retrieveSportDetails($SportName)
        echo "</table>";
        echo "</div>";
 }
-
 
 function getUserInfo($UserID)
 {
