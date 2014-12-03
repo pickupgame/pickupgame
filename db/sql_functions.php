@@ -569,6 +569,27 @@ function getGameDetails($GameID)
 //         return $detailsdisplayarray;
 //         $db->close();
 // }
+function HostGame($GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude)
+{
+    $db = dbConnect();
+    $sql = "INSERT INTO `game` (Name, Sport, MaxPlayersNum, DateAndTime, Password, Private, Host_ID, Description, Latitude, Longitude)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ssissiisdd', $GameName, $Sport, $MaxPlayersNum, $DateAndTime, $Password, $Private, $Host_ID, $Description, $Latitude, $Longitude);
+    $stmt->execute();
+
+    // echo $db->error;
+    $db->close();
+    if($stmt->affected_rows > 0)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+
+}
 
 
 function DetermineNextUserID()
