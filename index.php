@@ -12,22 +12,22 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-gmaps-latlon-picker.css"/>
-	<script src="javascript/jquery-1.11.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+	<script type="text/javascript" src="javascript/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>	
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="js/jquery-gmaps-latlon-picker.js"></script>
-
-<script>
-
-
-
-</script>
-
+	<script type="text/javascript" src="js/jquery-gmaps-latlon-picker.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>	
 </head>
 <body>
 
 <script>
 $(function(){
+	$('#datetimepicker2').datetimepicker({
+         format: 'yyyy/MM/dd hh:mm:ss',
+         language: 'en',
+     });
 	<?php
 	//This area changes the display of the page depending on what is included in the URL.
 		if(isset($_GET['page']))

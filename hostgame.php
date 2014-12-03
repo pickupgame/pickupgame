@@ -9,7 +9,7 @@
 	$Password = isset($_POST["Password"]) ? $_POST["Password"] : "";
 	$Description = isset($_POST["Description"]) ? $_POST["Description"] : "";
 	$Private = 0;
-	$DateAndTime = "2014-11-07 00:00:00";	// Need to decide how we are grabbing this and storing in database. Exists as DateTime datatype in Database (Date Picker?)
+	$DateAndTime = isset($_POST["dateandtime"]) ? $_POST["dateandtime"] : "";	// Need to decide how we are grabbing this and storing in database. Exists as DateTime datatype in Database (Date Picker?)
 	$Longitude = isset($_POST["longitude"]) ? $_POST["longitude"] : "";					   
 	$Latitude = isset($_POST["latitude"]) ? $_POST["latitude"] : "";;							// Pulled coordinates stored here from Google Maps
 	$iserror = false;
@@ -19,7 +19,9 @@
 	//ensure that all fields have been filled in correctly
 	if(isset($_POST["submit"]))
 	{
-
+		echo "<pre>";
+		var_dump($_POST);
+		echo "</pre>";
 	    if ($GameName == "") {
 	        $iserror = true;
 	        print "<p class='text-danger'>You must enter in a game name.</p>";
@@ -57,6 +59,19 @@
 	echo "</select></td></tr>";
 	echo "<tr><td><label>Players:</label></td><td><input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'></td></tr>";
 	echo "<tr><td><label>Password:</label></td><td><input class='form-control' type = 'password' name = 'Password' id = 'Password'></td></tr>";
+	echo "<tr><td><label>Date and Time:</label></td><td>";
+
+?>
+<div class='input-group date' id='datetimepicker1'>
+    <input type='text' class="form-control" name='dateandtime' />
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+<?php
+	
+
+
+	echo "</td></tr>";
 	echo "<tr><td><label>Description:</label></td><td><textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea></td></tr>";
 	?>
 	<tr>
@@ -78,3 +93,9 @@
 
 
 ?>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
