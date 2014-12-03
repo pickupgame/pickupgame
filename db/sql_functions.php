@@ -116,7 +116,7 @@ function getLikes($UserID)
     }
     else
     {
-        return NULL;
+        return 0;
     }
     
 }
@@ -935,7 +935,7 @@ function getTotalRatingsAsPlayer($UserID)
     }
     else
     {
-        return NULL;
+        return 0;
     }
     
 }
