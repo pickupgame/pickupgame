@@ -10,8 +10,8 @@
 	$Description = isset($_POST["Description"]) ? $_POST["Description"] : "";
 	$Private = 0;
 	$DateAndTime = "2014-11-07 00:00:00";	// Need to decide how we are grabbing this and storing in database. Exists as DateTime datatype in Database (Date Picker?)
-	$Longitude = 15;					   
-	$Latitude = 12;							// Pulled coordinates stored here from Google Maps
+	$Longitude = isset($_POST["longitude"]) ? $_POST["longitude"] : "";					   
+	$Latitude = isset($_POST["latitude"]) ? $_POST["latitude"] : "";;							// Pulled coordinates stored here from Google Maps
 	$iserror = false;
 	$Host_ID = (isset($_SESSION["UserID"]) ? $_SESSION["UserID"] : "");			// Current user's session ID
 	$get_sports = getSports();				// Gets all sports from database to fill in dropdown
@@ -19,6 +19,7 @@
 	//ensure that all fields have been filled in correctly
 	if(isset($_POST["submit"]))
 	{
+
 	    if ($GameName == "") {
 	        $iserror = true;
 	        print "<p class='text-danger'>You must enter in a game name.</p>";
@@ -57,7 +58,22 @@
 	echo "</select></td></tr>";
 	echo "<tr><td><label>Players:</label></td><td><input class='form-control' type = 'number' name = 'MaxPlayersNum' min = '1' max = '11' id = 'MaxPlayersNum'></td></tr>";
 	echo "<tr><td><label>Password:</label></td><td><input class='form-control' type = 'password' name = 'Password' id = 'Password'></td></tr>";
-	echo "<tr><td><label>Description:</label></td><td><textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea></td></tr></table>";
+	echo "<tr><td><label>Description:</label></td><td><textarea class='form-control' rows='4' cols='50' name = 'Description' id = 'Description'></textarea></td></tr>";
+	?>
+	<tr>
+		<td><label>Location:</label></td>
+		<td>
+			<fieldset class="gllpLatlonPicker">
+				<div class="gllpMap">Google Maps</div>
+				<label>Latitude:</label><input type="text" class="gllpLatitude" value="42.318449" name='latitude'/>
+				<label>Longitude:</label><input type="text" class="gllpLongitude" value="-83.233202"name='longitude'/>
+				<input type="hidden" class="gllpZoom" value="15"/>
+				<input type="button" class="gllpUpdateButton btn btn-warning btn-xs" value="update map">
+			</fieldset>
+		</td>
+	</tr>
+	</table>
+	<?php
 	echo "<input class='btn btn-info pull-right' type='submit' name='submit' value = 'Submit Game'></form>";
 	
 

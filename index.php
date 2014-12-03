@@ -11,9 +11,12 @@ session_start();
 	<title>Pickup Game &copy;</title>
 	<link rel="stylesheet" type="text/css" href="main.css" title="main">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-gmaps-latlon-picker.css"/>
+	<script src="javascript/jquery-1.11.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="js/jquery-gmaps-latlon-picker.js"></script>
 
-<script src="javascript/jquery-1.11.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <script>
 
 
@@ -82,7 +85,16 @@ $(function(){
 				</div>				
 			</div>
 			<div id="map-low" class="col-sm-4">
-				<iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=16&center=42.3184%2C-83.2332&key=AIzaSyBQ2HZ1pLBo-ttxJyGzfl5KYn1vHP8XSMc"></iframe>
+				<?php
+					if(isset($_GET['Game_ID']))
+					{
+						echo "<iframe width='300' height='300' frameborder='0' style='border:0' src='gamemap.php?Game_ID={$_GET['Game_ID']}'></iframe>";
+					}
+					else
+					{
+						echo '<iframe id="map-canvas" width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=16&center=42.3184%2C-83.2332&key=AIzaSyBQ2HZ1pLBo-ttxJyGzfl5KYn1vHP8XSMc"></iframe>';
+					}
+				?>
 			</div>
 		</div>
 

@@ -2,6 +2,7 @@
 <?php
 error_reporting(E_ALL);
 include_once("/db/sql_functions.php");
+
   if(isset($_GET['Game_ID']))
   {
     $GameID = $_GET['Game_ID'];
@@ -46,7 +47,7 @@ function initialize() {
   var jsport = "<?php echo $sport ?>";
   var jname = "<?php echo $gname ?>";
   var mapOptions = {
-    zoom: 12,
+    zoom: 15,
     center: new google.maps.LatLng(jlat, jlon)
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
