@@ -19,9 +19,6 @@
 	//ensure that all fields have been filled in correctly
 	if(isset($_POST["submit"]))
 	{
-		echo "<pre>";
-		var_dump($_POST);
-		echo "</pre>";
 	    if ($GameName == "") {
 	        $iserror = true;
 	        print "<p class='text-danger'>You must enter in a game name.</p>";
