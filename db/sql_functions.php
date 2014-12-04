@@ -966,6 +966,22 @@ function getUpcomingGames($PlayerID)
     }
 }
 
+function getAllGames()
+{
+    //for displaying all games on a google map
+    $db = dbConnect();
+    $sql = "SELECT name, private, latitude, longitude, sport, Game_ID, Description from game";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+    if($query->num_rows > 0)
+    {
+        $result = $query->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+}
+
 //new function -- Please add
 function getTotalRatingsAsPlayer($UserID)
 {
@@ -1026,6 +1042,10 @@ function allowedToViewGame($GameID)
     {
         // echo "not a member of the game, not allowed<br>";
         return FALSE;
+    }
+    elseif(isHost($_SESSION['UserID'], $GameID))
+    {
+        return TRUE;
     }
     elseif(isPrivate($GameID))
     {
