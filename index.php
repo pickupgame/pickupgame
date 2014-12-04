@@ -63,7 +63,7 @@ $(function(){
 
 	<div class="container" role="main">
 		<?php
-			if(!isset($_GET['Game_ID']))
+			if(!isset($_GET['page']))
 			{
 		?>
 		<div id="jumbotron-map" class="row">
