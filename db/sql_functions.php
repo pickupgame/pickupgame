@@ -33,6 +33,26 @@ function query($param, $querystring)
     }
 }
 
+function browseGame($Sport, $Private, $Name)
+{
+    $db = dbConnect();
+    $Name = '%'.$Name.'%';
+    $sql = "SELECT * FROM game WHERE Sport like ?  AND Private like ?  AND Name like ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('sss', $Sport,$Private,$Name);
+    $stmt->execute();
+    $query = $stmt->get_result();
+    $db->close();
+    if($query->num_rows > 0)
+    {   
+        return $query->fetch_all(MYSQLI_ASSOC); //returns a NUM indexed array with an associative inside for all rows.
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
 function insertHostRating($PlayerEvaluated, $PlayerRater, $Rating)
 {
     if($PlayerEvaluated == $PlayerRater)
