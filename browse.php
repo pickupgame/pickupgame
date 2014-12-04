@@ -39,7 +39,14 @@ if(isset($_POST['formSubmit']))
 		       echo "<td>".$row["Name"]."</td>";
 		       echo "<td>".$row["Sport"]."</td>";
 		       echo "<td>".$row["DateAndTime"]."</td>";
-		       echo "<td>".$row["Private"]."</td>";
+		       if ($row["Private"] == 0)
+		       {
+		       echo "<td> No </td>";
+		   		}
+		   		else
+		   		{
+		   		echo "<td> Yes </td>";
+		   		}	
 		       echo "<td> <a href=\"index.php?page=browse&Game_ID=".$row["Game_ID"]."\">View</a></td>";
 		       //index.php?page=browse&Game_ID=".$row["Game_ID"]."
 		       echo "</tr>";
