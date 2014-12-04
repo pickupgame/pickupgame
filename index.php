@@ -86,7 +86,7 @@ $(function(){
 			</div>
 			<div id="map-low" class="col-sm-4">
 				<?php
-					if(isset($_GET['Game_ID']))
+					if(isset($_GET['Game_ID']) AND allowedToViewGame($_GET['Game_ID']))
 					{
 						echo "<iframe width='300' height='300' frameborder='0' style='border:0' src='gamemap.php?Game_ID={$_GET['Game_ID']}'></iframe>";
 					}
