@@ -84,6 +84,17 @@ if($gamePlayers || $hostID )
 			<tr><th>Sport</th><td><?="{$gameData['Sport']}";?></td></tr>
 			<tr><th>Max Players</th><td><?="{$gameData['MaxPlayersNum']}";?></td></tr>
 			<tr><th>Private?</th><td><?php echo ($gameData['Private'] == 1 ? 'Yes' : 'No');; ?></td></tr>
+			<?php 
+				//if host is viewing the page, display password to them so they can give it out if they forgot
+				$gamePass = getGamePassword($_GET['Game_ID']);
+				if(isHost($_SESSION['UserID'], $_GET['Game_ID']))
+				{
+					if($gamePass)
+						echo "<tr><th>Pasword</th><td>$gamePass</td></tr>";
+				}
+
+
+			?>
 			<tr><th>Description</th><td><?="{$gameData['Description']}";?></td></tr>
 			<tr><th>DateAndTime</th><td><?="{$gameData['DateAndTime']}";?></td></tr>
 			<tr><th>Latitude</th><td><?="{$gameData['Latitude']}";?></td></tr>

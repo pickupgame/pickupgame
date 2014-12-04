@@ -207,6 +207,19 @@ function getHost($GameID)
     }
 }
 
+function isHost($UserID, $GameID)
+{
+    $host = getHost($GameID);
+    if($UserID == $host)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
 //These getGames functions are for home page functionality. If the user is logged in, it will display their hosted and participating games.
 function getHostGames($UserID)
 {
@@ -666,6 +679,28 @@ function JoinGame($GameID, $PlayerID)
     else
     {
         return FALSE;
+    }
+}
+
+function getGamePassword($GameID)
+{
+    $db = dbConnect();
+    $sql = "SELECT Password from game where Game_ID=?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('i', $GameID);
+    $stmt->execute();
+    $query = $stmt->get_result();    
+    $db->close(); 
+    if($query->num_rows > 0)   
+    {
+        $returnedpw = $query->fetch_all(MYSQLI_ASSOC);
+        if($returnedpw)
+            $returnedpw = $returnedpw[0];
+        return $returnedpw['Password'];
+    }
+    else
+    {
+        return NULL;
     }
 }
 
