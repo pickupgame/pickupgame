@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
-error_reporting(E_ALL);
-include_once("/db/sql_functions.php");
+error_reporting(0);
+include_once("db/sql_functions.php");
 
   if(isset($_GET['Game_ID']))
   {
