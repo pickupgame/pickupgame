@@ -1027,6 +1027,10 @@ function allowedToViewGame($GameID)
         // echo "not a member of the game, not allowed<br>";
         return FALSE;
     }
+    elseif(isPrivate($GameID))
+    {
+        return FALSE;
+    }
     elseif(!isPrivate($GameID))
     {
         // echo "allowed by public<br>";
