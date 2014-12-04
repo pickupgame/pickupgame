@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once('/db/sql_functions.php');
-// error_reporting(E_ALL);
+// error_reporting(0);
 
 	$Game_ID = $_GET['Game_ID'];
 	$gamePlayers = getGamePlayers($Game_ID);

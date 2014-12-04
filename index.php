@@ -63,8 +63,8 @@ $(function(){
 
 	<div class="container" role="main">
 		<?php
-			if(!isset($_GET['page']))
-			{
+		if(!isset($_GET['Game_ID']))
+		{
 		?>
 		<div id="jumbotron-map" class="row">
 			<div id="jumbotron" class="jumbotron col-sm-8 text-center">
@@ -74,7 +74,7 @@ $(function(){
 				</div>
 			</div>
 			<div class="col-sm-4 ">
-				<?php include('simplemap.php'); ?>
+				<iframe width='410px' height='320px' frameborder='0' style='border:0' scrolling='no' src='simplemap.php'></iframe>
 			</div>
 		</div>
 		<?php
@@ -98,7 +98,7 @@ $(function(){
 					}
 					else
 					{
-						// include('simplemap.php');
+						echo "<iframe width='410px' height='320px' frameborder='0' style='border:0' scrolling='no' src='simplemap.php'></iframe>";
 					}
 				?>
 			</div>
