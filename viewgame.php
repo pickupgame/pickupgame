@@ -18,9 +18,64 @@ include_once('/db/sql_functions.php');
 	if($gameExists)
 		$gameData = $gameExists[0];
 
-	if($gamePlayers || $hostID )
+if(isset($_POST['gamePassSubmit']))
+{
+	$gamePassword = isset($_POST["gamePassword"]) ? $_POST[ "gamePassword" ] : "";
+	if(isset($_SESSION['UserID']))
 	{
+		if(!empty($gamePassword))
+		{
+			//validate the input
+			if(checkGamePassword($Game_ID, $gamePassword))
+			{
+				//password matches
+				$_SESSION['Allowed'] = $Game_ID;
 
+			}
+			else
+			{
+				//password doesn't match
+				echo "<p class='text-danger'>Password doesn't match. Try Again.</p>";
+			}
+
+		}
+		else
+		{
+			echo "<p class='text-danger'>You must enter a password to view this game.</p>";
+		}
+	}
+	else
+	{
+		echo "<p class='text-danger'>You must be logged in to view a private game.</p>";
+	}
+}
+else
+{
+	$_SESSION['Allowed'] = 0;
+}
+
+if($gamePlayers || $hostID )
+{
+	if(!allowedToViewGame($Game_ID))
+	{			
+		?>
+		<p class='text-danger'>This game is private.</p>
+		<form method="POST">
+			<table class="table">
+				<tr>
+					<td><label>Password</label></td>
+					<td><input type="password" name="gamePassword"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="btn btn-info btn-xs" type="submit" value="submit" name="gamePassSubmit"/></td>
+				</tr>	
+			</table>
+		</form>
+		<?php
+	}
+	else
+	{			
 		?>
 		<div class="panel panel-info">
 			<div class="panel-heading">Game Details</div>
@@ -115,12 +170,12 @@ include_once('/db/sql_functions.php');
 		{
 			echo "<p class='text-danger'>Please login if you would like to join a game.</p>";
 		}
-		
 	}
-	else
-	{
-		echo "Game does not exist.";
-	}
-	
+}
+else
+{
+	echo "<p class='text-danger'>Game does not exist.";
+}
+
 
 ?>

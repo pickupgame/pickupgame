@@ -1,6 +1,6 @@
 <!-- Login.php-->
 <?php
-// session_start();
+session_start();
 include_once('db/sql_functions.php');
 $Username = isset($_POST["Username"]) ? $_POST[ "Username" ] : "";
 $Password = isset($_POST["Password"]) ? $_POST[ "Password" ] : "";
@@ -25,6 +25,7 @@ if ( isset($_POST["submit"]))
 		{
 			print("<p><span class = 'success'>YOU HAVE SUCCESSFULLY LOGGED INTO THE SYSTEM!</span></p>");			
 			$_SESSION["UserID"]=getUserID($Username);
+			$_SESSION['Allowed'] = 0;
 			// die();
 			header('Location: index.php?page=home');
 			//hide the login stuff since already logged in.

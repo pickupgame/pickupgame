@@ -681,6 +681,10 @@ function checkGamePassword($GameID, $Password)
     $db->close();
     foreach ($returnedpw as $checkpw)
     {
+        echo "{$checkpw['Password']}:";
+        echo "$Password";
+
+
         if($checkpw['Password'] === $Password)
         {
             return TRUE;
@@ -945,6 +949,63 @@ function getTotalRatingsAsPlayer($UserID)
         return 0;
     }
     
+}
+
+function isPrivate($GameID)
+{
+    $game = getGameDetails($GameID);
+    if($game)
+        $gameInfo = $game[0];
+    if(isset($gameInfo))
+    {
+        if($gameInfo['Private'] == '1')
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+}
+
+function UserNotInGame($GameID)
+{
+    if(isset($_SESSION['UserID']))
+    {   //if player or host return false, they are in the game.
+        if((userInGame($_SESSION['UserID'], $GameID) OR ($_SESSION['UserID'] == getHost($GameID))))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+}
+
+function allowedToViewGame($GameID)
+{
+    if($_SESSION['Allowed'] == $GameID)
+    {
+        // echo "allowed by password<br>";
+        return TRUE;
+    }
+    elseif(isPrivate($GameID) AND UserNotInGame($GameID))
+    {
+        // echo "not a member of the game, not allowed<br>";
+        return FALSE;
+    }
+    elseif(!isPrivate($GameID))
+    {
+        // echo "allowed by public<br>";
+        return TRUE;
+    }
+    else
+    {
+        // echo "otherwise must be in the game<br>";
+        return TRUE;
+    }
 }
 
 ?>
