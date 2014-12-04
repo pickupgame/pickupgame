@@ -63,8 +63,9 @@ $(function(){
           url: 'index.php?page=browse&Game_ID=' + games[i]['Game_ID']
         });
         marker['infowindow'] = new google.maps.InfoWindow({
-          content: '<div>Name: ' + games[i]['name'] + '</div>' +
-                  '<div>Description: ' + games[i]['Description'] + '</div>',
+          content: "<table class='table table-condensed table-bordered'>" +
+          '<tr><th>Name:</th><td>' + games[i]['name'] + '</tr></td><tr><th>Description:</th><td>' + games[i]['Description'] + '</td>' +
+          '</tr></table>',
           disableAutoPan : true
         });
 
