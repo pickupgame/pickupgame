@@ -48,7 +48,7 @@ if(isset($_POST['formSubmit']))
 		   		{
 		   		echo "<td> Yes </td>";
 		   		}	
-		       echo "<td> <a href=\"index.php?page=browse&Game_ID=".$row["Game_ID"]."\">View</a></td>";
+		       echo "<td> <a class='btn btn-info btn-xs' href=\"index.php?page=browse&Game_ID=".$row["Game_ID"]."\">View</a></td>";
 		       //index.php?page=browse&Game_ID=".$row["Game_ID"]."
 		       echo "</tr>";
 		   		}
