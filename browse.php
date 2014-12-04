@@ -15,7 +15,7 @@ if ($varcount == 0)
 		$varSport = "%";
 		$varPrivate = "%";
 		$varName = "%";
-		echo $varSport,$varPrivate,$varName;
+		//echo $varSport,$varPrivate,$varName;
 		$rows = browseGame($varSport,$varPrivate,$varName);
 
 	}
@@ -29,7 +29,7 @@ if(isset($_POST['formSubmit']))
 		{
 			$varName = "%";
 		}
-		echo $varSport,$varPrivate,$varName;
+		//echo $varSport,$varPrivate,$varName;
 		$rows = browseGame($varSport,$varPrivate,$varName);
 	}
 		echo '<table class="table table-striped"> <th>Game Name</th> <th>Sport</th> <th>Start Time</th> <th>Private?</th> <th>View Game</th>';
