@@ -1,36 +1,37 @@
-<form  method="post">
+<form id ="sportform" method="post">
 	<label for='formSport'>Select a sport</label><br>
-	<select name="formSport"><option value="Select">All Games</option><option value="vb">Volleyball</option><option value="fb">Football</option><option value="sc">Soccer</option> </select>
+	<select name="formSport"><option value="%">All Sports</option><option value="vb">Volleyball</option><option value="Basketball">Basketball</option><option value="fb">Football</option><option value="sc">Soccer</option> </select>
+	<select name="formPrivate"><option value="%">Public & Private</option><option value="0">Public</option><option value="1">Private</option></select>
+	<input type="text" name="gamename" placeholder="Game Name">
 	<input class='btn btn-info btn-xs' type="submit" name="formSubmit" value="Submit" >
 </form>
 
 <?php
 include_once("/db/sql_functions.php");
-	if(isset($_POST['formSubmit'])) 
+$varcount = 0;
+if ($varcount == 0) 
 	{
-		$varSport = $_POST['formSport'];
-		if ($varSport == 'vb')
-		{
-		$query = "SELECT * FROM game WHERE Sport=?";
-		$rows = query("Volleyball",$query);
-		}
-		else if ($varSport == 'fb')
-		{
-		$query = "SELECT * FROM game WHERE Sport=?";
-		$rows = query("Football",$query);
-		}
-		else if ($varSport == 'sc')
-		{
-		$query = "SELECT * FROM game WHERE Sport=?";
-		$rows = query("Soccer",$query);
-		}
-		else 
-		{
-		$query = "SELECT * FROM game WHERE Sport LIKE ?";
-		$rows = query("%",$query);
-		}
-		echo '<table class="table table-striped"> <th>Game Name</th> <th>Sport</th> <th>Start Time</th> <th>Private?</th> <th>View Game</th>';
+		$varcount = 1;
+		$varSport = "%";
+		$varPrivate = "%";
+		$varName = "%";
+		$rows = browseGame($varSport,$varPrivate,$varName);
 
+	}
+if(isset($_POST['formSubmit'])) 
+	{
+		$varcount = $varcount + 1;
+		$varSport = $_POST['formSport'];
+		$varPrivate = $_POST['formPrivate'];
+		$varName = $_POST['gamename'];
+		if($varName == NULL)
+		{
+			$varName = "%";
+		}
+		//echo $varSport,$varPrivate,$varName;
+		$rows = browseGame($varSport,$varPrivate,$varName);
+	}
+		echo '<table class="table table-striped"> <th>Game Name</th> <th>Sport</th> <th>Start Time</th> <th>Private?</th> <th>View Game</th>';
 		if(!empty($rows))
 			{
 			foreach ($rows as $row) {
@@ -46,5 +47,5 @@ include_once("/db/sql_functions.php");
 			}
 	   echo "</table>";
 
-	}
+	
 ?>
