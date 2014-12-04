@@ -7,7 +7,7 @@
 </form>
 
 <?php
-include_once("/db/sql_functions.php");
+include_once("db/sql_functions.php");
 $varcount = 0;
 if ($varcount == 0) 
 	{
