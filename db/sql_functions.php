@@ -681,10 +681,6 @@ function checkGamePassword($GameID, $Password)
     $db->close();
     foreach ($returnedpw as $checkpw)
     {
-        echo "{$checkpw['Password']}:";
-        echo "$Password";
-
-
         if($checkpw['Password'] === $Password)
         {
             return TRUE;
